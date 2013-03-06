@@ -16,6 +16,6 @@ public class Start extends Activity {
     	startActivity (new Intent (this, impress.class));
     }
     public void blog (final View view) {
-    	startActivity (new Intent (this, blog.class));
+    	startActivity (new Intent (this, RSSReader.class));
     }
 }
