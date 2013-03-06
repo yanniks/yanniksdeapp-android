@@ -28,7 +28,6 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/imageView1"
         android:layout_centerHorizontal="true"
-        android:onClick="blog"
         android:text="@string/blogposts" />
 
     <Button
@@ -37,7 +36,6 @@
         android:layout_height="wrap_content"
         android:layout_alignRight="@+id/button1"
         android:layout_below="@+id/button1"
-        android:onClick="impress"
         android:text="@string/impress" />
 
     <TextView
