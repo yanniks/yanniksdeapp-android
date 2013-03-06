@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">yanniks.deApp</string>
+    <string name="copyright">Copyright 2013 Yannik Ehlert</string>
+    <string name="blogposts">Blog news</string>
+    <string name="impress">Impress</string>
+    <string name="desclogo">yanniks.de Logo</string>
+
+</resources>
