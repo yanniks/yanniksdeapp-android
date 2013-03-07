@@ -23,8 +23,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".blog" />
-        <activity android:name=".impress" />
+        <activity android:name=".impress" android:label="@string/impress" />
         <activity android:name="org.sliit.FeedTabActivity" android:label="@string/app_name" android:configChanges="orientation"/>
         <activity android:name="org.sliit.SplashScreenActivity" android:label="@string/app_name" android:configChanges="orientation"/>
         <activity android:name="org.sliit.FeedWebActivity" android:label="@string/app_name"/>

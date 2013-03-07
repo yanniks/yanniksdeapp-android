@@ -60,4 +60,6 @@
     <string name="pref_update_period_descr">Update the items of the channels after the specified period</string>
     <string name="app_pref_default_tab_feed_id">1</string>
     <string name="app_pref_default_splash_screen_duration">0</string>
+    <string name="yannikehlert">- app and website developed by Yannik Ehlert</string>
+    <string name="feeder">- RSS Reader FeedER by rajithd</string>
 </resources>
