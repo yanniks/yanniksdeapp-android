@@ -382,7 +382,7 @@ public class FeedTabActivity extends TabActivity implements OnItemClickListener 
         		builder = new AlertDialog.Builder(this);
         		builder.setView(dialogLayout)
         			   .setTitle(title)
-        			   .setIcon(R.drawable.icon)
+        			   .setIcon(R.drawable.ic_launcher)
         			   .setNeutralButton(R.string.close, new DialogInterface.OnClickListener() {
         		           public void onClick(DialogInterface dialog, int id) {
         		                dialog.cancel();
@@ -397,7 +397,7 @@ public class FeedTabActivity extends TabActivity implements OnItemClickListener 
         		builder = new AlertDialog.Builder(this);
         		builder.setView(dialogLayout)
         			   .setTitle(title)
-        			   .setIcon(R.drawable.icon)
+        			   .setIcon(R.drawable.ic_launcher)
         			   .setNeutralButton(R.string.ok, new DialogInterface.OnClickListener() {
         		           public void onClick(DialogInterface dialog, int id) {
         		                dialog.cancel();
