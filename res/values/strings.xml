@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">yanniks.de App</string>
     <string name="copyright">Copyright 2013 Yannik Ehlert</string>
     <string name="blogposts">Blog news</string>
     <string name="snetworks">Social Networks</string>
