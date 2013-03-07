@@ -59,4 +59,6 @@
     <string name="pref_update_period_descr">Kanäle nach bestimmter Zeit automatisch aktualisieren</string>
     <string name="app_pref_default_tab_feed_id">1</string>
     <string name="app_pref_default_splash_screen_duration">0</string>
+    <string name="yannikehlert">- App and Website entwickelt von Yannik Ehlert</string>
+    <string name="feeder">- RSS Reader FeedER von rajithd</string>
 </resources>
