@@ -6,5 +6,6 @@
     <body>
     	<outline text="yanniks.de Blog" title="yanniks.de Blog" htmlUrl="http://yanniks.de/wp" xmlUrl="http://feeds.feedburner.com/yanniksde" type="rss"/>
      	<outline text="yanniksde @ Twitter" title="yanniksde @ Twitter" htmlUrl="http://twitter.com/yanniksde" xmlUrl="http://api.twitter.com/1/statuses/user_timeline.rss?screen_name=yanniksde" type="rss"/>
+     	<outline text="yanniksde @ Facebook" title="yanniksde @ Facebook" htmlUrl="http://facebook.com/yanniks.de" xmlUrl="http://yanniks.de/rssfacebook" type="rss"/>
     </body>
 </opml>
