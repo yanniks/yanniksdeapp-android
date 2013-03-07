@@ -1,6 +1,6 @@
 package org.sliit;
 
-import android.app.Activity;
+import org.holoeverywhere.app.Activity;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;

@@ -19,8 +19,8 @@
     <string name="error">Fehler</string>
     <string name="no_connection">Keine Internetverbindung!</string>
     <string name="favorites">Favoriten</string>
-    <string name="pubdate_format_pattern">E dd.MMM.yyyy - h:mmaa</string>
-    <string name="update_format_pattern">dd.MM.yyyy k:mm</string>
+    <string name="pubdate_format_pattern">E dd. MMM yyyy - h:mmaa</string>
+    <string name="update_format_pattern">dd. MM yyyy k:mm</string>
     <string name="yes">Ja</string>
     <string name="no">Nein</string>  
     <string name="loading">Laden...</string>

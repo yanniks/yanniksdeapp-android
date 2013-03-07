@@ -49,6 +49,7 @@
         android:layout_alignParentRight="true"
         android:layout_below="@+id/textView7"
         android:layout_marginTop="23dp"
+        android:onClick="social"
         android:text="Social Network" />
 
     <TextView

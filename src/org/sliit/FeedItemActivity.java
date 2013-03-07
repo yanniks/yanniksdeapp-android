@@ -20,9 +20,7 @@ import org.sliit.domain.Item;
 import org.sliit.service.RepositoryController;
 import org.sliit.service.DbSchema;
 import org.sliit.service.SharedPreferencesHelper;
-
 import de.yanniks.app.R;
-
 import java.util.Date;
 import java.util.Iterator;
 import java.util.List;

@@ -3,7 +3,7 @@ package de.yanniks.app;
 import android.os.Bundle;
 import org.sliit.SplashScreenActivity;
 import android.view.View;
-import android.app.Activity;
+import org.holoeverywhere.app.Activity;
 import android.content.Intent;
 
 public class Start extends Activity {
