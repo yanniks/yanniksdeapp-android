@@ -1,6 +1,7 @@
 package de.yanniks.app;
 
 import android.os.Bundle;
+import org.sliit.SplashScreenActivity;
 import android.view.View;
 import android.app.Activity;
 import android.content.Intent;
@@ -16,6 +17,6 @@ public class Start extends Activity {
     	startActivity (new Intent (this, impress.class));
     }
     public void blog (final View view) {
-    	startActivity (new Intent (this, RSSReader.class));
+    	startActivity (new Intent (this, SplashScreenActivity.class));
     }
 }

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="pref_max_items_labels">
+    	<item>5 Artikel</item>
+        <item>10 Artikel</item>
+        <item>20 Artikel</item>
+        <item>30 Artikel</item>
+        <item>50 Artikel</item>
+    </string-array>
+    <string-array name="pref_max_items_values">
+        <item>5</item>
+        <item>10</item>
+        <item>20</item>
+        <item>30</item>
+        <item>50</item>
+    </string-array>
+    <string-array name="pref_item_view_labels">
+    	<item>Offline</item>
+        <item>Online</item>
+    </string-array>
+    <string-array name="pref_item_view_values">
+        <item>0</item>
+        <item>1</item>
+    </string-array>
+    <string-array name="pref_max_hours_labels">
+    	<item>never</item>
+        <item>Nach 1 Tag</item>
+        <item>Nach 2 Tagen</item>
+        <item>Nach 1 Woche</item>
+        <item>Nach 1 Monat</item>
+    </string-array>
+    <string-array name="pref_max_hours_values">
+    	<item>-1</item>
+        <item>24</item>
+        <item>48</item>
+        <item>168</item>
+        <item>720</item>
+    </string-array>
+    <string-array name="pref_update_period_labels">
+    	<item>niemals, immer manuell aktualisieren</item>
+    	<item>Nach 5 Minuten</item>
+    	<item>Nach 15 Minuten</item>
+    	<item>Nach 30 Minuten</item>
+    	<item>Nach 1 Stunden</item>
+        <item>Nach 4 Stunden</item>
+        <item>Nach 8 Stunden</item>
+        <item>Nach 1 Tagen</item>
+        <item>Nach 2 Tagen</item>
+        <item>Nach 1 Wochen</item>
+    </string-array>
+    <string-array name="pref_update_period_values">
+    	<item>-1</item>
+    	<item>5</item>
+    	<item>15</item>
+    	<item>30</item>
+        <item>60</item>
+        <item>240</item>
+        <item>480</item>
+        <item>1440</item>
+        <item>2880</item>
+        <item>10080</item>
+    </string-array>
+</resources>

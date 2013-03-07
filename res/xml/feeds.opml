@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<opml version="1.0">
+    <head>
+        <title>FeedGoal Subscriptions</title>
+    </head>
+    <body>
+    	<outline text="yanniks.de Blog" title="yanniks.de Blog" htmlUrl="http://yanniks.de/wp" xmlUrl="http://yanniks.de/wp/feed/" type="rss"/>
+     	<outline text="yanniksde @ Twitter" title="yanniksde @ Twitter" htmlUrl="http://twitter.com/yanniksde" xmlUrl="http://api.twitter.com/1/statuses/user_timeline.rss?screen_name=yanniksde" type="rss"/>
+    </body>
+</opml>
