@@ -1,6 +1,6 @@
 package org.sliit;
 
-import android.app.Activity;
+
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.ContentValues;
@@ -17,6 +17,8 @@ import android.view.ContextMenu.ContextMenuInfo;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.Toast;
+
+import org.holoeverywhere.app.Activity;
 import org.sliit.domain.Feed;
 import org.sliit.domain.Item;
 import org.sliit.service.RepositoryController;
@@ -129,7 +131,7 @@ public class FeedWebActivity extends Activity {
         return super.onKeyDown(keyCode, event);
     }
     
-    public boolean onCreateOptionsMenu(Menu menu) {
+    public boolean onCreateLegacyOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.opt_item_menu, menu);
         
@@ -166,7 +168,7 @@ public class FeedWebActivity extends Activity {
         return true;
     }
     
-    public boolean onOptionsItemSelected(MenuItem item) {
+    public boolean onOptionsLegacyItemSelected(MenuItem item) {
         switch (item.getItemId()) {
 	        case R.id.menu_opt_home:
 	        	startActivity(item.getIntent());
@@ -190,7 +192,7 @@ public class FeedWebActivity extends Activity {
         return false;
     }
     
-    public void onCreateContextMenu (ContextMenu menu, View v, ContextMenuInfo menuInfo) {
+    public void onCreateLegacyContextMenu (ContextMenu menu, View v, ContextMenuInfo menuInfo) {
     	super.onCreateContextMenu(menu, v, menuInfo);
     	
 		if (v.getId() == R.id.webview) {
@@ -228,7 +230,7 @@ public class FeedWebActivity extends Activity {
     }
 
     
-    public boolean onContextItemSelected(MenuItem menuItem) {
+    public boolean onContextLegacyItemSelected(MenuItem menuItem) {
     	Item item = mRepositoryController.getItem(mItemId);
     	ContentValues values = null;
     	Intent intent = null;
