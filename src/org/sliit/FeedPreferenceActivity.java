@@ -2,8 +2,8 @@ package org.sliit;
 
 import android.os.Bundle;
 import android.preference.ListPreference;
+import android.preference.PreferenceActivity;
 
-import org.holoeverywhere.preference.PreferenceActivity;
 import org.sliit.domain.Feed;
 import org.sliit.service.RepositoryController;
 import de.yanniks.app.R;
@@ -36,7 +36,7 @@ public class FeedPreferenceActivity extends PreferenceActivity {
         
         addPreferencesFromResource(R.xml.preferences);
         
-        org.holoeverywhere.preference.ListPreference listPref = (org.holoeverywhere.preference.ListPreference) findPreference(PREF_START_CHANNEL_KEY);
+        ListPreference listPref = (ListPreference) findPreference(PREF_START_CHANNEL_KEY);
         
         List<Feed> feeds = mRepositoryController.getFeeds();
         Iterator<Feed> feedIterator = feeds.iterator();
