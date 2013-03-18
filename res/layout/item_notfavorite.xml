@@ -33,7 +33,7 @@
 			android:layout_toRightOf="@id/pubdate"
 			android:layout_alignTop="@id/pubdate"
 			style="@style/item_view_common_padding"
-			android:src="@drawable/no_fav"/>
+			android:src="@drawable/fav0"/>
 		<TextView
 			android:id="@+id/content"
 			android:layout_width="wrap_content" 

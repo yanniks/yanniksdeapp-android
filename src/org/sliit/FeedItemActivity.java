@@ -278,7 +278,7 @@ public class FeedItemActivity extends Activity {
     			values = new ContentValues();
     	    	values.put(DbSchema.ItemSchema.COLUMN_FAVORITE, DbSchema.ON);
     	    	mRepositoryController.updateItem(mItemId, values, null);
-    	    	favView.setImageResource(R.drawable.fav);
+    	    	favView.setImageResource(R.drawable.fav1);
     			Toast.makeText(this, R.string.add_fav_msg, Toast.LENGTH_SHORT).show();
     			return true;
     		case R.id.remove_fav:
@@ -296,7 +296,7 @@ public class FeedItemActivity extends Activity {
 									ContentValues values = new ContentValues();
 									values.put(DbSchema.ItemSchema.COLUMN_FAVORITE, DbSchema.OFF);
 									ImageView favView = (ImageView) findViewById(R.id.fav);
-					    	    	favView.setImageResource(R.drawable.no_fav);
+					    	    	favView.setImageResource(R.drawable.fav0);
 									mRepositoryController.updateItem(mItemId, values, null);
 									Toast.makeText(FeedItemActivity.this, R.string.remove_fav_msg, Toast.LENGTH_SHORT).show();
 	    			           }
@@ -311,7 +311,7 @@ public class FeedItemActivity extends Activity {
     				values = new ContentValues();
         	    	values.put(DbSchema.ItemSchema.COLUMN_FAVORITE, DbSchema.OFF);
         	    	mRepositoryController.updateItem(mItemId, values, null);
-	    	    	favView.setImageResource(R.drawable.no_fav);
+	    	    	favView.setImageResource(R.drawable.fav0);
         			Toast.makeText(this, R.string.remove_fav_msg, Toast.LENGTH_SHORT).show();
     			}
     			return true;

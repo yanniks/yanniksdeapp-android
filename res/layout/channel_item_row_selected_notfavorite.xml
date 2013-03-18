@@ -26,7 +26,7 @@
 		    		android:id="@+id/fav"
 					android:layout_width="wrap_content"
 					android:layout_height="wrap_content"
-					android:src="@drawable/no_fav"
+					android:src="@drawable/fav0"
 					style="@style/item_common_fav_icon"/>
 		</LinearLayout>
 	</LinearLayout>

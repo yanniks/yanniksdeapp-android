@@ -145,7 +145,7 @@ public class FeedTabActivity extends TabActivity implements OnItemClickListener 
     
     private void setTabs(String activeTab, String title) {
     	getTabHost().addTab(getTabHost().newTabSpec(TAB_CHANNEL_TAG).setIndicator(title).setContent(R.id.feedlist));
-    	getTabHost().addTab(getTabHost().newTabSpec(TAB_FAV_TAG).setIndicator(getResources().getText(R.string.favorites),getResources().getDrawable(R.drawable.fav)).setContent(R.id.favoritelist));
+    	getTabHost().addTab(getTabHost().newTabSpec(TAB_FAV_TAG).setIndicator(getResources().getText(R.string.favorites),getResources().getDrawable(R.drawable.fav1)).setContent(R.id.favoritelist));
     	getTabHost().setCurrentTabByTag(activeTab);
     }
     
