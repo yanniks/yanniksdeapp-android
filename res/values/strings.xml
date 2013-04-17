@@ -6,6 +6,7 @@
     <string name="blogposts">Blog news</string>
     <string name="snetworks">Social Networks</string>
     <string name="impress">Impress</string>
+    <string name="source">This app is open source. The code is availible @ GitHub:</string>
     <string name="desclogo">yanniks.de Logo</string>
     <string name="about">The new yanniks.de is a developer website with different topics: Android, iOS, Mac and Linux tutorials are part of the new yanniks.de concept. Have fun!</string>
     <string name="pref_name">RSS Settings</string>
@@ -13,9 +14,10 @@
     <string name="app_description">The RSS reader for the yanniks.de Android App</string>
     <string name="email">Email: kontakt@yanniks.de</string>
     <string name="website">http://yanniks.de</string>
+    <string name="github">https://github.com/yanniks/yanniksdeapp-android</string>
     <string name="contact">Twitter: @yanniksde</string>
     <string name="version">Version</string>
-    <string name="powered">Powered by FeedER</string>
+    <string name="powered">RSS reader powered by FeedER</string>
     <string name="close">Close</string>
     <string name="ok">Ok</string>
     <string name="error">Error</string>

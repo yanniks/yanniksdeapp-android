@@ -5,6 +5,7 @@
     <string name="copyright">Copyright 2013 Yannik Ehlert</string>
     <string name="blogposts">Blog News</string>
     <string name="impress">Impressum</string>
+    <string name="source">Diese App ist Open Source. Der Code ist verfügbar auf GitHub:</string>
     <string name="about">Das neue yanniks.de ist eine Entwickler-Website mit verschiedenen Themen: Android, iOS, Mac und Linux Tutorials sind Teile des neuen Konzepts von yanniks.de. Viel Spaß!</string>
     <string name="pref_name">RSS Einstellungen</string>
     <string name="app_title">yanniks.de RSS Reader</string>
@@ -13,7 +14,7 @@
     <string name="website">http://yanniks.de</string>
     <string name="contact">Twitter: @yanniksde</string>
     <string name="version">Version</string>
-    <string name="powered">Powered by FeedER</string>
+    <string name="powered">RSS Reader powered by FeedER</string>
     <string name="close">Schließen</string>
     <string name="ok">Ok</string>
     <string name="error">Fehler</string>
