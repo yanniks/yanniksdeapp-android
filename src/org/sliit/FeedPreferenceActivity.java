@@ -1,9 +1,9 @@
 package org.sliit;
 
 import android.os.Bundle;
-import android.preference.ListPreference;
-import android.preference.PreferenceActivity;
 
+import org.holoeverywhere.preference.ListPreference;
+import org.holoeverywhere.preference.PreferenceActivity;
 import org.sliit.domain.Feed;
 import org.sliit.service.RepositoryController;
 import de.yanniks.app.R;
