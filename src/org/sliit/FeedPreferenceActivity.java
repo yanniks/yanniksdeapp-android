@@ -1,14 +1,15 @@
 package org.sliit;
 
-import android.os.Bundle;
-
-import org.holoeverywhere.preference.ListPreference;
-import org.holoeverywhere.preference.PreferenceActivity;
-import org.sliit.domain.Feed;
-import org.sliit.service.RepositoryController;
-import de.yanniks.app.R;
 import java.util.Iterator;
 import java.util.List;
+
+import org.sliit.domain.Feed;
+import org.sliit.service.RepositoryController;
+
+import android.os.Bundle;
+import android.preference.ListPreference;
+import android.preference.PreferenceActivity;
+import de.yanniks.app.R;
 
 
 public class FeedPreferenceActivity extends PreferenceActivity {

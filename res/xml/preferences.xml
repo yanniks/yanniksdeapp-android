@@ -23,7 +23,7 @@
 		android:title="@string/pref_max_hours_title"
 		android:summary="@string/pref_max_hours_descr"
 		android:key="maxHours"
-		android:defaultValue="168"
+		android:defaultValue="-1"
 		android:entries="@array/pref_max_hours_labels"
 		android:entryValues="@array/pref_max_hours_values" />
 	<ListPreference

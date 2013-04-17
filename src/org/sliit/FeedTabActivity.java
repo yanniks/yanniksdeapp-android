@@ -6,33 +6,25 @@ import android.app.ProgressDialog;
 import android.app.TabActivity;
 import android.content.ContentValues;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.text.format.DateFormat;
 import android.util.Log;
+import android.view.*;
 import android.view.ContextMenu.ContextMenuInfo;
-import android.view.View;
-import android.view.ViewGroup;
 import android.widget.*;
+import android.widget.AdapterView.AdapterContextMenuInfo;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.TabHost.OnTabChangeListener;
-
-import org.holoeverywhere.LayoutInflater;
-import org.holoeverywhere.widget.AdapterView.OnItemClickListener;
 import org.sliit.domain.Item;
 import org.sliit.service.RepositoryController;
 import org.sliit.service.DbSchema;
 import org.sliit.service.SharedPreferencesHelper;
 import org.xml.sax.SAXException;
 import org.sliit.domain.Feed;
-
-import com.actionbarsherlock.internal.widget.IcsAdapterView.AdapterContextMenuInfo;
-import com.actionbarsherlock.view.ContextMenu;
-import com.actionbarsherlock.view.Menu;
-import com.actionbarsherlock.view.MenuInflater;
-import com.actionbarsherlock.view.MenuItem;
-import com.actionbarsherlock.view.SubMenu;
 
 import de.yanniks.app.R;
 
@@ -42,7 +34,6 @@ import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 
-@SuppressWarnings("deprecation")
 public class FeedTabActivity extends TabActivity implements OnItemClickListener {
 	private static final String LOG_TAG = "FeedTabActivity";
 	
@@ -99,8 +90,8 @@ public class FeedTabActivity extends TabActivity implements OnItemClickListener 
         registerForContextMenu(feedListView);
         registerForContextMenu(favoriteListView);
         
-        feedListView.setOnItemSupportClickListener(this);
-        favoriteListView.setOnItemSupportClickListener(this);
+        feedListView.setOnItemClickListener(this);
+        favoriteListView.setOnItemClickListener(this);
     }
     
     @Override
@@ -228,7 +219,7 @@ public class FeedTabActivity extends TabActivity implements OnItemClickListener 
     }
     
     public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater inflater = getSupportMenuInflater();
+        MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.opt_tab_menu, menu);
         
         MenuItem channelsMenuItem = (MenuItem) menu.findItem(R.id.menu_opt_channels);
@@ -298,7 +289,7 @@ public class FeedTabActivity extends TabActivity implements OnItemClickListener 
     	
 		if (v.getId() == R.id.feedlist || v.getId() == R.id.favoritelist) {
 			menu.setHeaderTitle (R.string.ctx_menu_title);
-			MenuInflater inflater = getSupportMenuInflater();
+			MenuInflater inflater = getMenuInflater();
 			AdapterView.AdapterContextMenuInfo acmi = (AdapterView.AdapterContextMenuInfo) menuInfo;
 			Item item = mRepositoryController.getItem(acmi.id);
 			if (item != null) {
@@ -532,11 +523,4 @@ public class FeedTabActivity extends TabActivity implements OnItemClickListener 
         		Toast.makeText(FeedTabActivity.this, R.string.no_new_item_msg, Toast.LENGTH_LONG).show();
         }
     }
-
-	@Override
-	public void onItemClick(org.holoeverywhere.widget.AdapterView<?> arg0,
-			View arg1, int arg2, long arg3) {
-		// TODO Auto-generated method stub
-		
-	}
 }

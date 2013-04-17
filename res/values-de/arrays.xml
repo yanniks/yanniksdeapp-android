@@ -23,7 +23,7 @@
         <item>1</item>
     </string-array>
     <string-array name="pref_max_hours_labels">
-    	<item>never</item>
+    	<item>Nie</item>
         <item>Nach 1 Tag</item>
         <item>Nach 2 Tagen</item>
         <item>Nach 1 Woche</item>
