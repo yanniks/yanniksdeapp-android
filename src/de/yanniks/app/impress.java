@@ -1,10 +1,9 @@
 package de.yanniks.app;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-
-import org.holoeverywhere.app.Activity;
 
 public class impress extends Activity {
 

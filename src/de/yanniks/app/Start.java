@@ -2,16 +2,15 @@ package de.yanniks.app;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 
-import org.holoeverywhere.app.Activity;
 import org.sliit.SplashScreenActivity;
 import org.sliit.service.SharedPreferencesHelper;
 
-import com.actionbarsherlock.view.Menu;
-import com.actionbarsherlock.view.MenuInflater;
-import com.actionbarsherlock.view.MenuItem;
-
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
@@ -26,7 +25,7 @@ public class Start extends Activity {
 	}
     @Override
     public boolean onCreateOptionsMenu (Menu menu) {
-        MenuInflater inflater = getSupportMenuInflater();
+        MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.menu_home, menu);
         return super.onCreateOptionsMenu(menu);
     }  

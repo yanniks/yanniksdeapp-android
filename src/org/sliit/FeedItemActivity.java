@@ -1,5 +1,6 @@
 package org.sliit;
 
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.ContentValues;
@@ -15,7 +16,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import org.holoeverywhere.app.Activity;
 import org.sliit.domain.Feed;
 import org.sliit.domain.Item;
 import org.sliit.service.RepositoryController;

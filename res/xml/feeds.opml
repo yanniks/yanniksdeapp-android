@@ -4,8 +4,8 @@
         <title>FeedGoal Subscriptions</title>
     </head>
     <body>
-    	<outline text="yanniks.de Blog" title="yanniks.de Blog" htmlUrl="http://yanniks.de/wp" xmlUrl="http://feeds.feedburner.com/yanniksde" type="rss"/>
-     	<outline text="yanniksde @ Twitter" title="yanniksde @ Twitter" htmlUrl="http://twitter.com/yanniksde" xmlUrl="http://api.twitter.com/1/statuses/user_timeline.rss?screen_name=yanniksde" type="rss"/>
+    	<outline text="yanniks.de Blog" title="yanniks.de Blog" htmlUrl="http://yanniks.github.io" xmlUrl="http://yanniks.github.io/feed.xml" type="rss"/>
+    	<outline text="yanniks.de Blog (alt)" title="yanniks.de Blog (alt)" htmlUrl="http://yanniks.de/wp" xmlUrl="http://yanniks.de/wp/feed" type="rss"/>
      	<outline text="yanniksde @ Facebook" title="yanniksde @ Facebook" htmlUrl="http://facebook.com/yanniks.de" xmlUrl="http://yanniks.de/rssfacebook" type="rss"/>
     </body>
 </opml>
