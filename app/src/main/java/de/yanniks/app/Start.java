@@ -15,6 +15,7 @@ import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.widget.ImageView;
 
 public class Start extends Activity {
 
