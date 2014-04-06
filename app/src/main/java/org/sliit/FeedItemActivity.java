@@ -32,12 +32,14 @@ public class FeedItemActivity extends Activity {
 	
 	private RepositoryController mRepositoryController;
 	private long mItemId = -1;
+    TextView mCustomTitle;
 	
     @Override
     public void onCreate(Bundle savedInstanceState) {
     	super.onCreate(savedInstanceState);
 
         getActionBar().setDisplayHomeAsUpEnabled(true);
+        getActionBar().setTitle("yanniks.de Blog");
     	
         mRepositoryController = new RepositoryController(this);
         mRepositoryController.open();

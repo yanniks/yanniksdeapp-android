@@ -35,6 +35,7 @@ import java.util.Iterator;
 import java.util.List;
 
 public class FeedTabActivity extends TabActivity implements OnItemClickListener {
+    TextView updated;
 	private static final String LOG_TAG = "FeedTabActivity";
 	
 	private static final String TAB_CHANNEL_TAG = "tab_tag_channel";
@@ -52,6 +53,7 @@ public class FeedTabActivity extends TabActivity implements OnItemClickListener 
         super.onCreate(savedInstanceState);
 
         getActionBar().setDisplayHomeAsUpEnabled(true);
+        getActionBar().setTitle("yanniks.de Blog");
         
         mRepositoryController = new RepositoryController(this);
         mRepositoryController.open();
@@ -180,7 +182,8 @@ public class FeedTabActivity extends TabActivity implements OnItemClickListener 
 			Feed currentFeed = mRepositoryController.getFeed(SharedPreferencesHelper.getPrefTabFeedId(this));
 			if (currentFeed != null && currentFeed.getRefresh() != null) {
 				CharSequence formattedUpdate = DateFormat.format(getResources().getText(R.string.update_format_pattern), currentFeed.getRefresh());
-				getWindow().setTitle("yanniks.de Blog - " + formattedUpdate);
+                updated = (TextView)findViewById(R.id.updated);
+                updated.setText(getString(R.string.updated) + ": " + formattedUpdate);
 			}
         	items = mRepositoryController.getItems(SharedPreferencesHelper.getPrefTabFeedId(this), 1, SharedPreferencesHelper.getPrefMaxItems(this));
 		}
@@ -223,7 +226,7 @@ public class FeedTabActivity extends TabActivity implements OnItemClickListener 
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.opt_tab_menu, menu);
-        
+
         MenuItem channelsMenuItem = (MenuItem) menu.findItem(R.id.menu_opt_channels);
         SubMenu subMenu = channelsMenuItem.getSubMenu();
         

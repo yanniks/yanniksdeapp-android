@@ -62,6 +62,7 @@ public class FeedWebActivity extends Activity {
         requestWindowFeature(Window.FEATURE_INDETERMINATE_PROGRESS);
 
         getActionBar().setDisplayHomeAsUpEnabled(true);
+        getActionBar().setTitle("yanniks.de Blog");
     	
         mRepositoryController = new RepositoryController(this);
         mRepositoryController.open();

@@ -8,12 +8,10 @@
     </item>
     <item android:id="@+id/menu_opt_preferences"
           android:title="@string/menu_preferences"
-          android:titleCondensed="@string/menu_preferences" 
-          android:icon="@drawable/ic_preferences"
+          android:titleCondensed="@string/menu_preferences"
           android:showAsAction="never"/>
     <item android:id="@+id/menu_opt_about"
           android:title="@string/menu_about"
           android:titleCondensed="@string/menu_about"
-          android:icon="@drawable/ic_info"
           android:showAsAction="never"/>      
 </menu>
