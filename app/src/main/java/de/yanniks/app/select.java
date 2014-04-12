@@ -31,7 +31,7 @@ public class select extends Activity {
         if (!lookup.isEmpty()) {
             page(lookup);
         }
-        if (!Arrays.asList("htc_ace", "yakju").contains(Build.PRODUCT)) {
+        if (!Arrays.asList("htc_ace", "yakju", "occam", "t03gxx", "full_falcon").contains(Build.PRODUCT)) {
             TextView notsupported = (TextView) findViewById(R.id.notsupported);
             notsupported.setVisibility(View.VISIBLE);
             if (adbenabled() == false) {
