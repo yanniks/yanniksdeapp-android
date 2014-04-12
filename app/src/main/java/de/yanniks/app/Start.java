@@ -78,7 +78,7 @@ public class Start extends FragmentActivity {
         navDrawerItems.add(new NavDrawerItem(navMenuTitles[2], navMenuIcons.getResourceId(2, -1)));
         navDrawerItems.add(new NavDrawerItem(navMenuTitles[3], navMenuIcons.getResourceId(3, -1)));
         navDrawerItems.add(new NavDrawerItem(navMenuTitles[4], navMenuIcons.getResourceId(4, -1)));
-        if (Arrays.asList("htc_ace", "yakju").contains(device)) {
+        if (Arrays.asList("htc_ace", "yakju", "occam", "t03gxx,").contains(device)) {
             navDrawerItems.add(new NavDrawerItem(navMenuTitles[5], navMenuIcons.getResourceId(4, -1), true, getString(R.string.newmark)));
         } else {
             if (adbenabled() == true){

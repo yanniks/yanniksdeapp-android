@@ -10,7 +10,7 @@
         android:layout_height="wrap_content"
         android:contentDescription="@string/desclogo"
         android:src="@drawable/logo"
-        android:layout_alignParentTop="true"
+        android:layout_centerVertical="true"
         android:layout_centerHorizontal="true" />
     
     <TextView
@@ -30,5 +30,14 @@
         android:layout_alignParentRight="true"
         android:text="@string/copyright"
         android:textAppearance="?android:attr/textAppearanceSmall" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:id="@+id/imageView"
+        android:maxHeight="300dp"
+        android:src="@drawable/menu"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_above="@+id/imageView1" />
 
 </RelativeLayout>

@@ -14,7 +14,7 @@
     <string name="email">Email: kontakt@yanniks.de</string>
     <string name="website">http://yanniks.de</string>
     <string name="github" translatable="false">GitHub: https://github.com/yanniks/yanniksdeapp-android</string>
-    <string name="bitbucket" translatable="false">BitBucket: http://bitbucket.org/yanniks/yanniksdeapp-android</string>
+    <string name="bitbucket" translatable="false">BitBucket: https://bitbucket.org/yanniks/yanniksdeapp-android</string>
     <string name="contact">Twitter: @yanniksde</string>
     <string name="version">Version</string>
     <string name="powered">RSS reader powered by FeedER</string>
@@ -48,7 +48,7 @@
     <string name="menu_refresh">Refresh</string>
     <string name="menu_channels">Channels</string>
     <string name="menu_preferences">Settings</string>
-    <string name="menu_about">About</string>
+    <string name="menu_about">About the app</string>
     <string name="new_item_msg">There are new items</string>
     <string name="no_new_item_msg">There is no new item</string>
     <string name="no_new_fav_item_msg">There is no favorite item</string>

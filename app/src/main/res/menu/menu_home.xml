@@ -2,6 +2,6 @@
     <item android:id="@+id/menu_opt_about"
           android:title="@string/menu_about"
           android:titleCondensed="@string/menu_about"
-          android:showAsAction="never"
+          android:showAsAction="ifRoom|withText"
           android:icon="@android:drawable/ic_menu_info_details"/>
 </menu>
