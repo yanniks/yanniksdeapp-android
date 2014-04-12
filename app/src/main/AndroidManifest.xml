@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="de.yanniks.app"
     android:versionCode="8"
-    android:versionName="x.x alpha"
+    android:versionName="4.1rc1"
     android:installLocation="auto" >
 
     <uses-sdk
