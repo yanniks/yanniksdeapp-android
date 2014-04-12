@@ -19,26 +19,8 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
-        android:text="@string/copyright"
+        android:text="@string/license"
         android:textAppearance="?android:attr/textAppearanceSmall" />
-
-    <Button
-        android:id="@+id/button1"
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/imageView1"
-        android:layout_centerHorizontal="true"
-        android:onClick="blog"
-        android:text="@string/blogposts" />
-
-    <Button
-        android:id="@+id/button2"
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
-        android:layout_alignRight="@+id/button1"
-        android:layout_below="@+id/button1"
-        android:onClick="impress"
-        android:text="@string/impress" />
 
     <TextView
         android:id="@+id/textView2"
@@ -46,7 +28,7 @@
         android:layout_height="wrap_content"
         android:layout_above="@+id/textView1"
         android:layout_alignParentRight="true"
-        android:text="All rights reserved."
+        android:text="@string/copyright"
         android:textAppearance="?android:attr/textAppearanceSmall" />
 
 </RelativeLayout>

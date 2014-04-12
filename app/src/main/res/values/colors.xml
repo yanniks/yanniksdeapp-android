@@ -9,4 +9,10 @@
 	<color name="list_divider">@color/main_color</color>
 	<color name="item_notselected_text">@color/color2</color>
 	<color name="item_selected_text">@color/color1</color>
+    <color name="list_item_title">#fff</color>
+    <color name="list_background">#303030</color>
+    <color name="list_background_pressed">#992416</color>
+    <color name="list_divider2">#272727</color>
+    <color name="counter_text_bg">#626262</color>
+    <color name="counter_text_color">#c5c4c4</color>
 </resources>

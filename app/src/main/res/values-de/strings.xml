@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">yanniks.de App</string>
-    <string name="copyright">Copyright 2014 Yannik Ehlert</string>
+    <string name="copyright">App von Yannik Ehlert</string>
     <string name="blogposts">Blog-Meldungen</string>
     <string name="impress">Impressum</string>
     <string name="source">Diese App ist Open Source. Der Code ist verfügbar auf GitHub:</string>
@@ -63,4 +63,19 @@
     <string name="app_pref_default_splash_screen_duration">0</string>
     <string name="yannikehlert">- App and Website entwickelt von Yannik Ehlert</string>
     <string name="feeder">- RSS Reader FeedER von rajithd</string>
+    <string name="devmode">Entwicklermodus</string>
+    <string name="webview">Weblink</string>
+    <string name="oclock">Uhr</string>
+    <string name="webimprint">Online-Impressum</string>
+    <string name="cydia">Cydia-Quelle</string>
+    <string name="cdporter">CD porter</string>
+    <string name="navigation">Navigation</string>
+    <string name="newmark">NEW</string>
+    <string name="license">Unter GNU GPL v3-Lizenz veröffentlicht</string>
+
+    <string name="learnmore">Mehr erfahren</string>
+    <string name="learnmore_title">Mehr erfahren auf...</string>
+    <string name="welcomelevel">Willkommen auf dem nächsten Level von Custom ROMs.</string>
+    <string name="lang">de</string>
+    <string name="notsupported">Dein Gerät wird nicht unterstützt! :\'(</string>
 </resources>

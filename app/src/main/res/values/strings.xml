@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">yanniks.de App</string>
-    <string name="copyright">Copyright 2014 Yannik Ehlert</string>
+    <string name="copyright">App by Yannik Ehlert</string>
     <string name="blogposts">Blog news</string>
     <string name="snetworks">Social Networks</string>
     <string name="impress">Imprint</string>
-    <string name="source">This app is open source. The code is available @ GitHub:</string>
+    <string name="source">This app released under GNU GPL v3 license. The code is available at GitHub and at BitBucket.</string>
     <string name="desclogo" translatable="false">yanniks.de Logo</string>
     <string name="about">The new yanniks.de is a developer website with different topics: Android, iOS, Mac and Linux tutorials are part of the new yanniks.de concept. Have fun!</string>
     <string name="pref_name">RSS Settings</string>
@@ -13,7 +13,8 @@
     <string name="app_description">The RSS reader for the yanniks.de Android App</string>
     <string name="email">Email: kontakt@yanniks.de</string>
     <string name="website">http://yanniks.de</string>
-    <string name="github" translatable="false">https://github.com/yanniks/yanniksdeapp-android</string>
+    <string name="github" translatable="false">GitHub: https://github.com/yanniks/yanniksdeapp-android</string>
+    <string name="bitbucket" translatable="false">BitBucket: http://bitbucket.org/yanniks/yanniksdeapp-android</string>
     <string name="contact">Twitter: @yanniksde</string>
     <string name="version">Version</string>
     <string name="powered">RSS reader powered by FeedER</string>
@@ -24,7 +25,7 @@
     <string name="favorites">Favorites</string>
     <string name="pubdate_format_pattern">E MMM dd, yyyy - h:mmaa</string>
     <string name="update_format_pattern">MM/dd/yyyy k:mm</string>
-    <string name="updated">Updated:</string>
+    <string name="updated">Updated</string>
     <string name="yes">Yes</string>
     <string name="no">No</string>  
     <string name="loading">Loading...</string>
@@ -65,4 +66,52 @@
     <string name="app_pref_default_splash_screen_duration">0</string>
     <string name="yannikehlert">- app and website developed by Yannik Ehlert</string>
     <string name="feeder">- RSS Reader FeedER by rajithd</string>
+    <string name="devmode">Developer mode</string>
+    <string name="webview">Web link</string>
+    <string name="oclock">o\'clock</string>
+    <string name="webimprint">Imprint (online)</string>
+    <string name="cydia">Cydia repo</string>
+    <string name="cdporter">CD porter</string>
+    <string name="newmark">NEU</string>
+    <string name="license">Released under GNU GPL v3</string>
+
+    <string name="drawer_open">Slider Menu Opened</string>
+    <string name="drawer_close">Slider Menu Closed</string>
+    <string name="desc_list_item_icon">Item Icon</string>
+    <string name="navigation">Navigation</string>
+
+    <!-- Nav Drawer Menu Items -->
+    <string-array name="nav_drawer_items">
+        <item >@string/menu_home</item>
+        <item>@string/blogposts</item>
+        <item >@string/impress</item>
+        <item >@string/cydia</item>
+        <item >@string/cdporter</item>
+        <item>@string/cyandream</item>
+    </string-array>
+    <string-array name="nav_drawer_items_title">
+        <item >@string/app_name</item>
+        <item>@string/blogposts</item>
+        <item >@string/impress</item>
+        <item >@string/cydia</item>
+        <item >@string/cdporter</item>
+        <item>@string/app_name</item>
+    </string-array>
+    <array name="nav_drawer_icons">
+        <item>@drawable/ic_home</item>
+        <item>@drawable/ic_blog</item>
+        <item>@drawable/ic_imprint</item>
+        <item>@drawable/ic_cydia</item>
+        <item>@drawable/ic_cyandream</item>
+    </array>
+
+    <string name="cyandream" translatable="false">CyanDream</string>
+    <string name="learnmore">Learn more</string>
+    <string name="learnmore_title">Learn more at...</string>
+    <string name="welcomelevel">Welcome on the next level of custom ROMs.</string>
+    <string name="lang">en</string>
+    <string name="xda" translatable="false">XDA-Developers</string>
+    <string name="androidhilfe" translatable="false">Android-Hilfe.de</string>
+    <string name="androidpit" translatable="false">AndroidPIT.de</string>
+    <string name="notsupported">Your device is not supported! :\'(</string>
 </resources>

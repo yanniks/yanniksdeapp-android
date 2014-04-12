@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Start" >
-    
+
     <TextView
         android:id="@+id/textView1"
         android:layout_width="wrap_content"
@@ -11,7 +11,7 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
         android:gravity="center"
-        android:text="@string/copyright"
+        android:text="@string/license"
         android:textAppearance="?android:attr/textAppearanceSmall" />
 
     <TextView
@@ -20,7 +20,7 @@
         android:layout_height="wrap_content"
         android:layout_above="@+id/textView1"
         android:layout_alignParentRight="true"
-        android:text="All rights reserved."
+        android:text="@string/copyright"
         android:textAppearance="?android:attr/textAppearanceSmall" />
 
     <Button

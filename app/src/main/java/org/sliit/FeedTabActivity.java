@@ -183,7 +183,7 @@ public class FeedTabActivity extends TabActivity implements OnItemClickListener 
 			if (currentFeed != null && currentFeed.getRefresh() != null) {
 				CharSequence formattedUpdate = DateFormat.format(getResources().getText(R.string.update_format_pattern), currentFeed.getRefresh());
                 updated = (TextView)findViewById(R.id.updated);
-                updated.setText(getString(R.string.updated) + ": " + formattedUpdate);
+                updated.setText(getString(R.string.updated) + ": " + formattedUpdate + " " + getString(R.string.oclock));
 			}
         	items = mRepositoryController.getItems(SharedPreferencesHelper.getPrefTabFeedId(this), 1, SharedPreferencesHelper.getPrefMaxItems(this));
 		}

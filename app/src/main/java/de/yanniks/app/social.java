@@ -19,7 +19,7 @@ public class social extends Activity {
  	   try {
  		  startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("fb://page/132390900157794")));
    	   } catch (Exception e) {
-   		startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("http://yanniks.de/facebook")));
+   		startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.facebook.com/yanniks.de")));
    	   }
 }
 	public void gplus (final View view) {
