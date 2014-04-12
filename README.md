@@ -1,4 +1,6 @@
-yanniks.de Android App Source Code
+### yanniks.de Android App Source Code
 
 This is the source code of the yanniks.de Android App.
-Attention: Requires Holo Everywhere!
+As I don't want to write any novels over here, this has to be okay.
+
+The app is released under GNU GPLv3 license.
