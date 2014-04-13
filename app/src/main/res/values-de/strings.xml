@@ -32,7 +32,7 @@
     <string name="remove_fav">Von den Favoriten entfernen</string>
     <string name="remove_fav_confirmation">Das Datum dieses Artikels ist abgelaufen, er wird von der Liste entfernt. Bist du sicher, dass du ihn von den Favoriten entfernen möchtest?</string>
     <string name="remove_fav_msg">Der Artikel wurde von den Favoriten entfernt</string>
-    <string name="no_fav_msg">Du hast keine Favoriten mehr</string>
+    <string name="no_fav_msg">Du hast keine Favoriten</string>
     <string name="share">Artikel teilen</string>
     <string name="share_subject">Ich habe einen neuen Artikel über die yanniks.de App geteilt</string>
     <string name="snetworks">Soziale Netzwerke</string>

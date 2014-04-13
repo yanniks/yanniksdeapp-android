@@ -35,8 +35,16 @@ public class http extends Activity {
                 String yanniksdepath = data.getPath();
                 if (!yanniksdepath.isEmpty()) {
                     if (yanniksdepath.contains("impressum")) {
+                        Intent imprint = new Intent(this, Start.class);
+                        imprint.putExtra("fragment", "imprint");
+                        startActivity(imprint);
+                    }else if (yanniksdepath.contains("cdporter")) {
                         Intent imprint = new Intent(this,Start.class);
-                        imprint.putExtra("fragment","imprint");
+                        imprint.putExtra("fragment","cdporter");
+                        startActivity(imprint);
+                    }else if (yanniksdepath.contains("cydia")) {
+                        Intent imprint = new Intent(this,Start.class);
+                        imprint.putExtra("fragment","cydia");
                         startActivity(imprint);
                     } else if (yanniksdepath.contains("cms/")) {
                         String webview1 = yanniksdepath.replace("/cms/de/", "");

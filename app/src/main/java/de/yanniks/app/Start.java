@@ -29,8 +29,12 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import android.support.v4.widget.DrawerLayout;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
 
 import de.yanniks.app.R;
 import de.yanniks.app.menu.NavDrawerItem;
@@ -78,16 +82,34 @@ public class Start extends FragmentActivity {
         navDrawerItems.add(new NavDrawerItem(navMenuTitles[2], navMenuIcons.getResourceId(2, -1)));
         navDrawerItems.add(new NavDrawerItem(navMenuTitles[3], navMenuIcons.getResourceId(3, -1)));
         navDrawerItems.add(new NavDrawerItem(navMenuTitles[4], navMenuIcons.getResourceId(4, -1)));
-        if (Arrays.asList("htc_ace", "yakju", "occam", "t03gxx", "full_falcon").contains(device)) {
-            navDrawerItems.add(new NavDrawerItem(navMenuTitles[5], navMenuIcons.getResourceId(4, -1), true, getString(R.string.newmark)));
-        } else {
-            if (adbenabled() == true){
-                navDrawerItems.add(new NavDrawerItem(navMenuTitles[5], navMenuIcons.getResourceId(4, -1), true, getString(R.string.newmark)));
-                Log.i(getString(R.string.cyandream), "Device not supported but ADB debugging is enabled.");
-            } else
-                Log.i(getString(R.string.cyandream), "Device " + device + " is not supported :(");
-        }
 
+        Calendar c = Calendar.getInstance();
+        Date today = c.getTime();
+
+        int dayOfMonth = 15;
+        int month = 5;
+        int year = 2014;
+
+        c.set(Calendar.YEAR, year);
+        c.set(Calendar.MONTH, month - 1);
+        c.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+        c.set(Calendar.HOUR_OF_DAY, 0);
+        c.set(Calendar.MINUTE, 0);
+        c.set(Calendar.SECOND, 0);
+        c.set(Calendar.MILLISECOND, 0);
+        Date dateSpecified = c.getTime();
+
+        if (dateSpecified.before(today)) {
+            if (Arrays.asList("htc_ace", "yakju", "occam", "t03gxx", "full_falcon").contains(device)) {
+                navDrawerItems.add(new NavDrawerItem(navMenuTitles[5], navMenuIcons.getResourceId(4, -1), true, getString(R.string.newmark)));
+            } else {
+                if (adbenabled() == true) {
+                    navDrawerItems.add(new NavDrawerItem(navMenuTitles[5], navMenuIcons.getResourceId(4, -1), true, getString(R.string.newmark)));
+                    Log.i(getString(R.string.cyandream), "Device not supported but ADB debugging is enabled.");
+                } else
+                    Log.i(getString(R.string.cyandream), "Device " + device + " is not supported :(");
+            }
+        }
 
         // Recycle the typed array
         navMenuIcons.recycle();
@@ -126,7 +148,11 @@ public class Start extends FragmentActivity {
                 String fragment = intent.getStringExtra("fragment");
                 if (fragment.equals("imprint")) {
                     displayView(2);
-                }
+                } else if (fragment.equals("cdporter")) {
+                    displayView(4);
+                } else if (fragment.equals("cydia")) {
+                displayView(3);
+            }
             } catch(NullPointerException e) {
                 displayView(0);
             }
@@ -239,10 +265,18 @@ public class Start extends FragmentActivity {
                 fragment = new impress();
                 break;
             case 3:
-                fragment = new cydia();
+                Bundle data = new Bundle();
+                data.putString("url","http://yanniks.de/cms/api.php?launch=app&lang=" + getString(R.string.lang) + "&page=cydia");
+                data.putString("title",getString(R.string.cydia));
+                fragment = new webviewfragment();
+                fragment.setArguments(data);
                 break;
             case 4:
-                fragment = new cdporter();
+                Bundle data2 = new Bundle();
+                data2.putString("url","http://yanniks.de/cms/api.php?launch=app&lang=" + getString(R.string.lang) + "&page=cdporter");
+                data2.putString("title",getString(R.string.cdporter));
+                fragment = new webviewfragment();
+                fragment.setArguments(data2);
                 break;
             case 5:
                 fragment = new cyandream();

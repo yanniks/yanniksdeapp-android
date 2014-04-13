@@ -1,6 +1,7 @@
 package de.yanniks.app;
 
 import android.content.Context;
+import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
@@ -12,7 +13,7 @@ import android.webkit.WebChromeClient;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
-public class cdporter extends Fragment {
+public class webviewfragment extends Fragment {
     private String curURL;
     public void init(String url) {
         curURL = url;
@@ -27,26 +28,29 @@ public class cdporter extends Fragment {
     public View onCreateView(LayoutInflater inflater,
                              ViewGroup container,
                              Bundle savedInstanceState) {
-        init("http://yanniks.de/cms/api.php?launch=app&lang=" + getString(R.string.lang) + "&page=cdporter");
+        Bundle bundle = getArguments();
+        String url = bundle.getString("url");
+        final String title = bundle.getString("title");
+        init(url);
         View view = inflater
                 .inflate(R.layout.webview, container, false);
         if (curURL != null) {
             WebView webview = (WebView) view.findViewById(R.id.webview);
             webview.setWebViewClient(new webClient());
-            if (isOnline() == true) {
-                webview.loadUrl(curURL);
-            } else {
+            if (!isOnline() == true) {
                 webview.loadUrl("file:///android_asset/error-" + getString(R.string.lang) + ".html");
-            }
-            webview.setWebChromeClient(new WebChromeClient() {
+            } else {
+                webview.loadUrl(curURL);
+                webview.setWebChromeClient(new WebChromeClient() {
                 public void onProgressChanged(WebView view, int progress)
                 {
                     getActivity().setTitle(getString(R.string.loading));
                     getActivity().setProgress(progress * 100);
                     if(progress == 100)
-                        getActivity().getActionBar().setTitle(getString(R.string.cdporter));
+                        getActivity().getActionBar().setTitle(title);
                 }
             });
+        }
         }
         return view;
     }

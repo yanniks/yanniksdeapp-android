@@ -30,10 +30,8 @@
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
                 <data android:scheme="http" android:host="yanniks.de"/>
-                <data android:scheme="http" android:host="www.yanniks.de" />
             </intent-filter>
         </activity>
-        <activity android:name=".impress" android:label="@string/impress" />
         <activity android:name=".social" android:label="@string/snetworks" />
         <activity android:name="org.sliit.FeedTabActivity" android:label="@string/app_name" android:configChanges="orientation"/>
         <activity android:name="org.sliit.SplashScreenActivity" android:label="@string/app_name" android:configChanges="orientation">
@@ -47,7 +45,6 @@
         <activity android:name="org.sliit.FeedWebActivity" android:label="@string/app_name"/>
         <activity android:name="org.sliit.FeedItemActivity" android:label="@string/app_name"/>
         <activity android:name="org.sliit.FeedPreferenceActivity" android:label="@string/pref_name"/>
-        <activity android:name=".cyandream" />
         <activity android:name=".webview" android:configChanges="keyboardHidden|orientation" />
         
     </application>
