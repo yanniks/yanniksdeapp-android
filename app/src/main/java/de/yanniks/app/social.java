@@ -4,16 +4,25 @@ import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.view.GestureDetector;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
 
 public class social extends Activity {
-
+    private GestureDetector gestureDetector;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.social);
         getActionBar().setDisplayHomeAsUpEnabled(true);
+        gestureDetector = new GestureDetector(this, new GestureDetector.SimpleOnGestureListener() {
+            @Override
+            public boolean onDoubleTap(MotionEvent e) {
+                startActivity(new Intent(social.this, game.class));
+                return true;
+            }
+        });
 	}
 	public void facebook (final View view) {
  	   try {
@@ -28,6 +37,12 @@ public class social extends Activity {
 	public void twitter (final View view) {
 		startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("http://twitter.com/yanniksde")));
 	}
+    @Override
+    public boolean onTouchEvent(MotionEvent event) {
+        if (!gestureDetector.onTouchEvent(event))
+            return super.onTouchEvent(event);
+        return true;
+    }
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
     	{

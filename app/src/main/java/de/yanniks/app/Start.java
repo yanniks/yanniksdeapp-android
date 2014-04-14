@@ -2,7 +2,6 @@ package de.yanniks.app;
 
 import de.yanniks.app.menu.NavDrawerListAdapter;
 
-import android.os.Build;
 import android.provider.Settings;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
@@ -29,14 +28,11 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import android.support.v4.widget.DrawerLayout;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.GregorianCalendar;
 
-import de.yanniks.app.R;
 import de.yanniks.app.menu.NavDrawerItem;
 
 public class Start extends FragmentActivity {
