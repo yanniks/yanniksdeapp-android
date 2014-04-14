@@ -24,6 +24,7 @@ import org.sliit.service.SharedPreferencesHelper;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
+import android.webkit.WebView;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.support.v4.widget.DrawerLayout;
@@ -41,9 +42,6 @@ public class Start extends FragmentActivity {
     private ListView mDrawerList;
     private ActionBarDrawerToggle mDrawerToggle;
 
-    // nav drawer title
-    private CharSequence mDrawerTitle;
-
     // used to store app title
     private CharSequence mTitle;
 
@@ -58,7 +56,7 @@ public class Start extends FragmentActivity {
 	protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.menu);
-        mTitle = mDrawerTitle = getTitle();
+        mTitle = getTitle();
 
         // load slide menu items
         navMenuTitles = getResources().getStringArray(R.array.nav_drawer_items);
@@ -224,12 +222,6 @@ public class Start extends FragmentActivity {
             	dialog = null;
         }
         return dialog;
-    }
-    public void cyandream (final View view) {
-        startActivity (new Intent (this, cyandream.class));
-    }
-    public void blog (final View view) {
-        startActivity(new Intent(this, SplashScreenActivity.class));
     }
     protected boolean adbenabled() {
         return (Settings.Secure.getInt(getContentResolver(), Settings.Secure.ADB_ENABLED, 0) == 1);

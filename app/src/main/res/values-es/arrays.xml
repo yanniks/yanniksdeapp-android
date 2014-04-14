@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="pref_max_items_labels">
+        <item>5 artículos</item>
+        <item>10 artículos</item>
+        <item>20 artículos</item>
+        <item>30 artículos</item>
+        <item>50 artículos</item>
+    </string-array>
+    <string-array name="pref_max_items_values">
+        <item>5</item>
+        <item>10</item>
+        <item>20</item>
+        <item>30</item>
+        <item>50</item>
+    </string-array>
+    <string-array name="pref_item_view_labels">
+        <item>desconectado</item>
+        <item>conectado</item>
+    </string-array>
+    <string-array name="pref_item_view_values">
+        <item>0</item>
+        <item>1</item>
+    </string-array>
+    <string-array name="pref_max_hours_labels">
+        <item>Nunca</item>
+        <item>Después de 1 día</item>
+        <item>Después de 2 días</item>
+        <item>Después de una semana</item>
+        <item>Después de un mes</item>
+    </string-array>
+    <string-array name="pref_max_hours_values">
+        <item>-1</item>
+        <item>24</item>
+        <item>48</item>
+        <item>168</item>
+        <item>720</item>
+    </string-array>
+    <string-array name="pref_update_period_labels">
+        <item>Nunca,  siempre actualizar manualmente</item>
+        <item>Después de 5 minutos</item>
+        <item>Después de 15 minutos</item>
+        <item>Después de 30 minutos</item>
+        <item>Después de una hora</item>
+        <item>Después de 4 horas</item>
+        <item>Después de 8 horas</item>
+        <item>Después de un día</item>
+        <item>Después de 2 días</item>
+        <item>Después de una semana</item>
+    </string-array>
+    <string-array name="pref_update_period_values">
+        <item>-1</item>
+        <item>5</item>
+        <item>15</item>
+        <item>30</item>
+        <item>60</item>
+        <item>240</item>
+        <item>480</item>
+        <item>1440</item>
+        <item>2880</item>
+        <item>10080</item>
+    </string-array>
+</resources>

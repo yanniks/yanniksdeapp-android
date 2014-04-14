@@ -53,7 +53,7 @@
     <string name="no_new_item_msg">There is no new item</string>
     <string name="no_new_fav_item_msg">There is no favorite item</string>
     <string name="pref_start_channel_title">Default channel</string>
-    <string name="pref_start_channel_descr">The channel to display by default when you start the application</string>
+    <string name="pref_start_channel_descr">The channel to display by default when you open the blog</string>
     <string name="pref_item_view_title">Offline/Online reading</string>
     <string name="pref_item_view_descr">Choose how you want to read the items</string>
     <string name="pref_max_items_title">Items per channel</string>
