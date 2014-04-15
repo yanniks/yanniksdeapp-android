@@ -8,8 +8,6 @@ import android.view.ViewGroup;
 
 public class cyandream extends Fragment {
 
-        public cyandream(){}
-
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {

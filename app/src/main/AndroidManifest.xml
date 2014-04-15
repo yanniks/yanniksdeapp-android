@@ -30,6 +30,7 @@
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
                 <data android:scheme="http" android:host="yanniks.de"/>
+                <data android:scheme="yanniksde" android:host="app"/>
             </intent-filter>
         </activity>
         <activity android:name=".social" android:label="@string/snetworks" />

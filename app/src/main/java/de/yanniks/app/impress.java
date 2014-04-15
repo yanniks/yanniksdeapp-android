@@ -8,8 +8,6 @@ import android.view.ViewGroup;
 
 public class impress extends Fragment {
 
-    public impress(){}
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {

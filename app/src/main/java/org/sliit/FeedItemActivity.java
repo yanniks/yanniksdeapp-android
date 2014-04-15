@@ -61,7 +61,6 @@ public class FeedItemActivity extends Activity {
         title.setOnClickListener(new OnClickListener() {
         	@Override
             public void onClick(View v) {
-        		adjustLinkableTextColor (v);
         		startItemWebActivity();
             }
         });
@@ -70,7 +69,6 @@ public class FeedItemActivity extends Activity {
         channel.setOnClickListener(new OnClickListener() {
         	@Override
             public void onClick(View v) {
-        		adjustLinkableTextColor (v);
         		if (SharedPreferencesHelper.isOnline(FeedItemActivity.this)) {
         			Feed feed = mRepositoryController.getFeed(mRepositoryController.getItemFeedId(mItemId));
         			Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(feed.getHomePage().toString()));
@@ -84,7 +82,6 @@ public class FeedItemActivity extends Activity {
         read_online.setOnClickListener(new OnClickListener() {
         	@Override
             public void onClick(View v) {
-        		adjustLinkableTextColor (v);
         		startItemWebActivity();
             }
         });
@@ -99,11 +96,6 @@ public class FeedItemActivity extends Activity {
 	        startActivity(intent);
     	} else
     		showDialog(SharedPreferencesHelper.DIALOG_NO_CONNECTION);
-    }
-    
-    private void adjustLinkableTextColor (View v) {
-    	TextView textView = (TextView) v;
-    	
     }
     
     private void displayItemView() {

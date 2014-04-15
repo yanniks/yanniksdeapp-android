@@ -1,12 +1,10 @@
 package de.yanniks.app;
 
 import android.content.Context;
-import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,7 +13,6 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
 public class webviewfragment extends Fragment {
-    WebView mywebview;
     private String curURL;
     public void init(String url) {
         curURL = url;
@@ -37,13 +34,13 @@ public class webviewfragment extends Fragment {
         View view = inflater
                 .inflate(R.layout.webview, container, false);
         if (curURL != null) {
-            WebView mywebview = (WebView) view.findViewById(R.id.webview);
-            mywebview.setWebViewClient(new webClient());
+            WebView ww = (WebView) view.findViewById(R.id.webview);
+            ww.setWebViewClient(new webClient());
             if (!isOnline() == true) {
-                mywebview.loadUrl("file:///android_asset/error-" + getString(R.string.lang) + ".html");
+                ww.loadUrl("file:///android_asset/error-" + getString(R.string.lang) + ".html");
             } else {
-                mywebview.loadUrl(curURL);
-                mywebview.setWebChromeClient(new WebChromeClient() {
+                ww.loadUrl(curURL);
+                ww.setWebChromeClient(new WebChromeClient() {
                 public void onProgressChanged(WebView view, int progress)
                 {
                     getActivity().setTitle(getString(R.string.loading));
@@ -55,13 +52,6 @@ public class webviewfragment extends Fragment {
         }
         }
         return view;
-    }
-    public boolean WebViewGoBack() {
-        if(mywebview.canGoBack()){
-            mywebview.goBack();
-            return true;
-        }
-        return false;
     }
     public boolean isOnline() {
         ConnectivityManager cm = (ConnectivityManager) getActivity().getBaseContext()

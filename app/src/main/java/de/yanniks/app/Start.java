@@ -24,7 +24,6 @@ import org.sliit.service.SharedPreferencesHelper;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
-import android.webkit.WebView;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.support.v4.widget.DrawerLayout;

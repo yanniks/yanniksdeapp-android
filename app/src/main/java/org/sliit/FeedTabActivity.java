@@ -370,15 +370,15 @@ public class FeedTabActivity extends TabActivity implements OnItemClickListener 
     
     @Override
     protected Dialog onCreateDialog(int id) {
-    	Dialog dialog = null;
-    	CharSequence title = null;
-    	LayoutInflater inflater = null;
-    	View dialogLayout = null;
-    	AlertDialog.Builder builder = null;
+    	Dialog dialog;
+    	CharSequence title;
+    	LayoutInflater inflater;
+    	View dialogLayout;
+    	AlertDialog.Builder builder;
         switch (id) {
         	case SharedPreferencesHelper.DIALOG_UPDATE_PROGRESS:
 	            dialog = new ProgressDialog(this);
-	            ((ProgressDialog)dialog).setTitle(getResources().getText(R.string.updating));
+	            dialog.setTitle(getResources().getText(R.string.updating));
 	            ((ProgressDialog)dialog).setMessage(getResources().getText(R.string.downloading));
 	            ((ProgressDialog)dialog).setIndeterminate(true);
 	            dialog.setCancelable(false);
@@ -399,6 +399,8 @@ public class FeedTabActivity extends TabActivity implements OnItemClickListener 
         		dialog = builder.create();
         		break;
         	case SharedPreferencesHelper.DIALOG_NO_CONNECTION:
+                updated = (TextView)findViewById(R.id.updated);
+                updated.setText(getString(R.string.no_connection));
         		title = getString(R.string.error);
         		inflater = (LayoutInflater) getSystemService(LAYOUT_INFLATER_SERVICE);
         		dialogLayout = inflater.inflate(R.layout.dialog_no_connection, null);

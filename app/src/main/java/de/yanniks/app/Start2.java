@@ -6,10 +6,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 
 import android.view.ViewGroup;
-import android.widget.Button;
 
 public class Start2 extends Fragment {
-    Button cyandream;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
