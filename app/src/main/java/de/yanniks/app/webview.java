@@ -11,6 +11,8 @@ import android.view.MenuItem;
 import android.webkit.WebChromeClient;
 import android.webkit.WebView;
 
+import org.sliit.service.SharedPreferencesHelper;
+
 public class webview extends Activity {
     private WebView mWebView;
     @Override
@@ -20,7 +22,7 @@ public class webview extends Activity {
         getActionBar().setDisplayHomeAsUpEnabled(true);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.webview);
-        String weburl = "http://yanniks.de/cms/api.php?launch=app&lang=" + getString(R.string.lang) + "&page=" + intent.getStringExtra("url");
+        String weburl = "http://yanniks.de/cms/api.php?launch=app&lang=" + getString(R.string.lang) + "&page=" + intent.getStringExtra("url") + "&version=" + SharedPreferencesHelper.getVersionName(this);
         mWebView = (WebView) findViewById(R.id.webview);
         mWebView.getSettings().setJavaScriptEnabled(true);
         mWebView.loadUrl(weburl);

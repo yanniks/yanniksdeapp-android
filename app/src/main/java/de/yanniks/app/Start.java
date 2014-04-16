@@ -228,7 +228,7 @@ public class Start extends FragmentActivity {
     public void online (final View view) {
         Intent webview = new Intent(this, webview.class);
         webview.putExtra ("title",getString(R.string.impress));
-        webview.putExtra("url", "http://yanniks.de/cms/api.php?lang=" + getString(R.string.lang) + "&launch=app&page=impressum");
+        webview.putExtra("url", "http://yanniks.de/cms/api.php?lang=" + getString(R.string.lang) + "&launch=app&page=impressum" + "&version=" + SharedPreferencesHelper.getVersionName(this));
         startActivity(webview);
     }
     public void more (final View view) {
@@ -253,14 +253,14 @@ public class Start extends FragmentActivity {
                 break;
             case 3:
                 Bundle data = new Bundle();
-                data.putString("url","http://yanniks.de/cms/api.php?launch=app&lang=" + getString(R.string.lang) + "&page=cydia");
+                data.putString("url","http://yanniks.de/cms/api.php?launch=app&lang=" + getString(R.string.lang) + "&page=cydia" + "&version=" + SharedPreferencesHelper.getVersionName(this));
                 data.putString("title",getString(R.string.cydia));
                 fragment = new webviewfragment();
                 fragment.setArguments(data);
                 break;
             case 4:
                 Bundle data2 = new Bundle();
-                data2.putString("url","http://yanniks.de/cms/api.php?launch=app&lang=" + getString(R.string.lang) + "&page=cdporter");
+                data2.putString("url","http://yanniks.de/cms/api.php?launch=app&lang=" + getString(R.string.lang) + "&page=cdporter" + "&version=" + SharedPreferencesHelper.getVersionName(this));
                 data2.putString("title",getString(R.string.cdporter));
                 fragment = new webviewfragment();
                 fragment.setArguments(data2);
