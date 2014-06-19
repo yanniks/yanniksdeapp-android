@@ -1,5 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <PreferenceCategory
+        android:title="@string/defsettings" >
+        <CheckBoxPreference
+            android:title="@string/enablessl"
+            android:summary="@string/enablessl_desc"
+            android:key="usessl"
+            android:defaultValue="false" />
+    </PreferenceCategory>
+    <PreferenceCategory
+        android:title="@string/rss" >
 	<ListPreference
 		android:title="@string/pref_start_channel_title"
 		android:summary="@string/pref_start_channel_descr"
@@ -33,4 +43,5 @@
 		android:defaultValue="60"
 		android:entries="@array/pref_update_period_labels"
 		android:entryValues="@array/pref_update_period_values" />
+    </PreferenceCategory>
 </PreferenceScreen>

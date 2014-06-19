@@ -3,9 +3,11 @@ package de.yanniks.app;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.view.KeyEvent;
 import android.view.MenuItem;
 import android.webkit.WebChromeClient;
@@ -15,6 +17,7 @@ import org.sliit.service.SharedPreferencesHelper;
 
 public class webview extends Activity {
     private WebView mWebView;
+    String weburl;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         final Intent intent = getIntent();
@@ -22,7 +25,13 @@ public class webview extends Activity {
         getActionBar().setDisplayHomeAsUpEnabled(true);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.webview);
-        String weburl = "http://yanniks.de/cms/api.php?launch=app&lang=" + getString(R.string.lang) + "&page=" + intent.getStringExtra("url") + "&version=" + SharedPreferencesHelper.getVersionName(this);
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
+        Boolean ssl = prefs.getBoolean("usessl",false);
+        if (ssl == false) {
+            weburl = "http://yanniks.de/cms/api.php?launch=app&lang=" + getString(R.string.lang) + "&page=" + intent.getStringExtra("url") + "&version=" + SharedPreferencesHelper.getVersionName(this);
+        } else {
+            weburl = "https://yanniksde-updatechecker.rhcloud.com/cms/api.php?launch=app&lang=" + getString(R.string.lang) + "&page=" + intent.getStringExtra("url") + "&version=" + SharedPreferencesHelper.getVersionName(this);
+        }
         mWebView = (WebView) findViewById(R.id.webview);
         mWebView.getSettings().setJavaScriptEnabled(true);
         mWebView.loadUrl(weburl);

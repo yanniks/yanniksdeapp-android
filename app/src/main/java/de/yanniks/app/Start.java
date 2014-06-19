@@ -2,6 +2,8 @@ package de.yanniks.app;
 
 import de.yanniks.app.menu.NavDrawerListAdapter;
 
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 import android.provider.Settings;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
@@ -18,6 +20,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 
+import org.sliit.FeedPreferenceActivity;
 import org.sliit.SplashScreenActivity;
 import org.sliit.service.SharedPreferencesHelper;
 
@@ -36,7 +39,7 @@ import java.util.Date;
 import de.yanniks.app.menu.NavDrawerItem;
 
 public class Start extends FragmentActivity {
-    String device;
+    Boolean ssl;
     private DrawerLayout mDrawerLayout;
     private ListView mDrawerList;
     private ActionBarDrawerToggle mDrawerToggle;
@@ -75,34 +78,6 @@ public class Start extends FragmentActivity {
         navDrawerItems.add(new NavDrawerItem(navMenuTitles[2], navMenuIcons.getResourceId(2, -1)));
         navDrawerItems.add(new NavDrawerItem(navMenuTitles[3], navMenuIcons.getResourceId(3, -1)));
         navDrawerItems.add(new NavDrawerItem(navMenuTitles[4], navMenuIcons.getResourceId(4, -1)));
-
-        Calendar c = Calendar.getInstance();
-        Date today = c.getTime();
-
-        int dayOfMonth = 15;
-        int month = 5;
-        int year = 2014;
-
-        c.set(Calendar.YEAR, year);
-        c.set(Calendar.MONTH, month - 1);
-        c.set(Calendar.DAY_OF_MONTH, dayOfMonth);
-        c.set(Calendar.HOUR_OF_DAY, 0);
-        c.set(Calendar.MINUTE, 0);
-        c.set(Calendar.SECOND, 0);
-        c.set(Calendar.MILLISECOND, 0);
-        Date dateSpecified = c.getTime();
-
-        if (dateSpecified.before(today)) {
-            if (Arrays.asList("htc_ace", "yakju", "occam", "t03gxx", "full_falcon").contains(device)) {
-                navDrawerItems.add(new NavDrawerItem(navMenuTitles[5], navMenuIcons.getResourceId(4, -1), true, getString(R.string.newmark)));
-            } else {
-                if (adbenabled() == true) {
-                    navDrawerItems.add(new NavDrawerItem(navMenuTitles[5], navMenuIcons.getResourceId(4, -1), true, getString(R.string.newmark)));
-                    Log.i(getString(R.string.cyandream), "Device not supported but ADB debugging is enabled.");
-                } else
-                    Log.i(getString(R.string.cyandream), "Device " + device + " is not supported :(");
-            }
-        }
 
         // Recycle the typed array
         navMenuIcons.recycle();
@@ -173,9 +148,12 @@ public class Start extends FragmentActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         if (mDrawerToggle.onOptionsItemSelected(item)) {
             return true;
-        } else if(item.getItemId() == R.id.menu_opt_about){
-        	showDialog(SharedPreferencesHelper.DIALOG_ABOUT);
-        	return true;
+        } else if(item.getItemId() == R.id.menu_opt_about) {
+            showDialog(SharedPreferencesHelper.DIALOG_ABOUT);
+            return true;
+        } else if (item.getItemId() == R.id.menu_opt_preferences) {
+            startActivity(new Intent(this, FeedPreferenceActivity.class));
+            return true;
         }
         return super.onOptionsItemSelected(item);
     }
@@ -222,24 +200,24 @@ public class Start extends FragmentActivity {
         }
         return dialog;
     }
-    protected boolean adbenabled() {
-        return (Settings.Secure.getInt(getContentResolver(), Settings.Secure.ADB_ENABLED, 0) == 1);
-    }
     public void online (final View view) {
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
         Intent webview = new Intent(this, webview.class);
         webview.putExtra ("title",getString(R.string.impress));
-        webview.putExtra("url", "http://yanniks.de/cms/api.php?lang=" + getString(R.string.lang) + "&launch=app&page=impressum" + "&version=" + SharedPreferencesHelper.getVersionName(this));
+        ssl = prefs.getBoolean("usessl",false);
+        if (ssl == false) {
+            webview.putExtra("url", "http://yanniks.de/cms/api.php?lang=" + getString(R.string.lang) + "&launch=app&page=impressum" + "&version=" + SharedPreferencesHelper.getVersionName(this));
+        } else {
+            Log.i("yanniks.deApp","Using SSL");
+            webview.putExtra("url", "https://yanniksde-updatechecker.rhcloud.com/cms/api.php?lang=" + getString(R.string.lang) + "&launch=app&page=impressum" + "&version=" + SharedPreferencesHelper.getVersionName(this));
+        }
         startActivity(webview);
-    }
-    public void more (final View view) {
-        Intent select = new Intent(this, select.class);
-        select.putExtra("yanniksdepath", "");
-        startActivity(select);
     }
     public void social (final View view) {
         startActivity (new Intent (this, social.class));
     }
     private void displayView(int position) {
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
         Fragment fragment = null;
         switch (position) {
             case 0:
@@ -253,20 +231,29 @@ public class Start extends FragmentActivity {
                 break;
             case 3:
                 Bundle data = new Bundle();
-                data.putString("url","http://yanniks.de/cms/api.php?launch=app&lang=" + getString(R.string.lang) + "&page=cydia" + "&version=" + SharedPreferencesHelper.getVersionName(this));
+                ssl = prefs.getBoolean("usessl",false);
+                if (ssl == false) {
+                    data.putString("url", "http://yanniks.de/cms/api.php?launch=app&lang=" + getString(R.string.lang) + "&page=cydia" + "&version=" + SharedPreferencesHelper.getVersionName(this));
+                } else {
+                    Log.i("yanniks.deApp","Using SSL");
+                    data.putString("url", "https://yanniksde-updatechecker.rhcloud.com/cms/api.php?launch=app&lang=" + getString(R.string.lang) + "&page=cydia" + "&version=" + SharedPreferencesHelper.getVersionName(this));
+                }
                 data.putString("title",getString(R.string.cydia));
                 fragment = new webviewfragment();
                 fragment.setArguments(data);
                 break;
             case 4:
                 Bundle data2 = new Bundle();
-                data2.putString("url","http://yanniks.de/cms/api.php?launch=app&lang=" + getString(R.string.lang) + "&page=cdporter" + "&version=" + SharedPreferencesHelper.getVersionName(this));
+                ssl = prefs.getBoolean("usessl",false);
+                if (ssl == false) {
+                    data2.putString("url","http://yanniks.de/cms/api.php?launch=app&lang=" + getString(R.string.lang) + "&page=cdporter" + "&version=" + SharedPreferencesHelper.getVersionName(this));
+                } else {
+                    Log.i("yanniks.deApp","Using SSL");
+                    data2.putString("url", "https://yanniksde-updatechecker.rhcloud.com/cms/api.php?launch=app&lang=" + getString(R.string.lang) + "&page=cdporter" + "&version=" + SharedPreferencesHelper.getVersionName(this));
+                }
                 data2.putString("title",getString(R.string.cdporter));
                 fragment = new webviewfragment();
                 fragment.setArguments(data2);
-                break;
-            case 5:
-                fragment = new cyandream();
                 break;
             default:
                 break;
@@ -280,15 +267,7 @@ public class Start extends FragmentActivity {
             // update selected item and title, then close the drawer
             mDrawerList.setItemChecked(position, true);
             mDrawerList.setSelection(position);
-            if (adbenabled() == true) {
-                if (position == 0) {
-                    setTitle(navMenuTitles2[position] + " - " + getString(R.string.devmode));
-                } else
-                    setTitle(navMenuTitles2[position]);
-            } else {
-                setTitle(navMenuTitles2[position]);
-                mDrawerLayout.closeDrawer(mDrawerList);
-            }
+            setTitle(navMenuTitles2[position]);
             mDrawerLayout.closeDrawer(mDrawerList);
         } else {
             // error in creating fragment

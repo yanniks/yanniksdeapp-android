@@ -4,4 +4,8 @@
           android:titleCondensed="@string/menu_about"
           android:showAsAction="ifRoom|withText"
           android:icon="@android:drawable/ic_menu_info_details"/>
+    <item android:id="@+id/menu_opt_preferences"
+        android:title="@string/menu_preferences"
+        android:titleCondensed="@string/menu_preferences"
+        android:showAsAction="never"/>
 </menu>

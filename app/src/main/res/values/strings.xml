@@ -4,11 +4,12 @@
     <string name="copyright">App by Yannik Ehlert</string>
     <string name="blogposts">Blog news</string>
     <string name="snetworks">Social Networks</string>
+    <string name="rss">RSS</string>
     <string name="impress">Imprint</string>
     <string name="source">This app released under GNU GPL v3 license. The code is available at GitHub and at BitBucket.</string>
     <string name="desclogo" translatable="false">yanniks.de Logo</string>
     <string name="about">The new yanniks.de is a developer website with different topics: Android, iOS, Mac and Linux tutorials are part of the new yanniks.de concept. Have fun!</string>
-    <string name="pref_name">RSS Settings</string>
+    <string name="pref_name">Settings</string>
     <string name="app_title">yanniks.de RSS reader</string>
     <string name="app_description">The RSS reader for the yanniks.de Android App</string>
     <string name="email">Email: kontakt@yanniks.de</string>
@@ -87,7 +88,6 @@
         <item >@string/impress</item>
         <item >@string/cydia</item>
         <item >@string/cdporter</item>
-        <item>@string/cyandream</item>
     </string-array>
     <string-array name="nav_drawer_items_title">
         <item >@string/app_name</item>
@@ -105,13 +105,8 @@
         <item>@drawable/ic_cyandream</item>
     </array>
 
-    <string name="cyandream" translatable="false">CyanDream</string>
-    <string name="learnmore">Learn more</string>
-    <string name="learnmore_title">Learn more at...</string>
-    <string name="welcomelevel">Welcome on the next level of custom ROMs.</string>
     <string name="lang">en</string>
-    <string name="xda" translatable="false">XDA-Developers</string>
-    <string name="androidhilfe" translatable="false">Android-Hilfe.de</string>
-    <string name="androidpit" translatable="false">AndroidPIT.de</string>
-    <string name="notsupported">Your device is not supported! :\'(</string>
+    <string name="enablessl">Enable SSL</string>
+    <string name="enablessl_desc">Use SSL for accessing the pages - this is still experimental</string>
+    <string name="defsettings">Default Settings</string>
 </resources>

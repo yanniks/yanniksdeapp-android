@@ -42,10 +42,6 @@ public class http extends Activity {
                             webview.putExtra("url", webviewurl);
                             startActivity(webview);
                         }
-                    } else if (yanniksdepath.contains("/appcheck")) {
-                        Intent appcheck = new Intent(this,select.class);
-                        appcheck.putExtra("yanniksdepath",yanniksdepath);
-                        startActivity(appcheck);
                     } else if (yanniksdepath.contains("/google+")) {
                         startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://plus.google.com/113445355917245195373")));
                     } else if (yanniksdepath.contains("/twitter")) {

@@ -6,7 +6,7 @@
     <string name="impress">pie de imprenta</string>
     <string name="source">Esta aplicación es de código abierto. El código está disponible en GitHub:</string>
     <string name="about">El nuevo yanniks.de es un sitio de desarrollo con diversos temas: Android, iOS, Mac y Linux tutoriales son partee del nuevo concepto de yanniks.de. Diviértete!</string>
-    <string name="pref_name">Ajustes RSS</string>
+    <string name="pref_name">Ajustes</string>
     <string name="app_title">yanniks.de RSS Reader</string>
     <string name="app_description">El RSS Reader por la yanniks.de Android App</string>
     <string name="email">E-Mail: kontakt@yanniks.de</string>
@@ -72,10 +72,8 @@
     <string name="navigation">Navegación</string>
     <string name="newmark">NUEVA</string>
     <string name="license">Publicado bajo licencia GNU GPLv3</string>
-
-    <string name="learnmore">Obtenga más información</string>
-    <string name="learnmore_title">Aprenda más a...</string>
-    <string name="welcomelevel">Bienvenido al siguiente nivel de ROMs personalizadas.</string>
-    <string name="lang">en</string>
-    <string name="notsupported">Su dispositivo no es compatible! :\'(</string>
+    <string name="lang">es</string>
+    <string name="enablessl">Activar SSL</string>
+    <string name="enablessl_desc">Activar SSL para acceso la página - actualmente experimental</string>
+    <string name="defsettings">Ajustes predeterminados</string>
 </resources>
