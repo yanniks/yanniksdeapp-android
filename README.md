@@ -3,4 +3,4 @@
 This is the source code of the yanniks.de Android App.
 As I don't want to write any novels over here, this has to be okay.
 
-The app is released under GNU GPLv3 license.
+The app is released under AWTFPL license.

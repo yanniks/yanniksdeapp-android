@@ -71,7 +71,7 @@
     <string name="cdporter">CD porter</string>
     <string name="navigation">Navigation</string>
     <string name="newmark">NEU</string>
-    <string name="license">Unter GNU GPL v3-Lizenz veröffentlicht</string>
+    <string name="license">Unter AWTFPL-Lizenz veröffentlicht</string>
     <string name="lang">de</string>
     <string name="enablessl">SSL aktivieren</string>
     <string name="enablessl_desc">SSL für den Zugriff auf die Seite aktivieren - aktuell noch experimentell</string>
