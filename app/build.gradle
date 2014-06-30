@@ -1,19 +1,19 @@
 apply plugin: 'android'
 
 android {
-    compileSdkVersion 17
-    buildToolsVersion "19.1.0"
+    compileSdkVersion 'android-L'
+    buildToolsVersion "20.0.0"
 
     lintOptions {
         abortOnError false
     }
 
     defaultConfig {
-        minSdkVersion 14
-        targetSdkVersion 19
+        minSdkVersion 'L'
+        targetSdkVersion 'L'
     }
     dependencies {
-        compile "com.android.support:support-v4:19.+"
+        compile "com.android.support:support-v4:21.+"
     }
 
     buildTypes {
