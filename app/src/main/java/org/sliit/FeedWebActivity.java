@@ -25,6 +25,7 @@ import org.sliit.service.DbSchema;
 import org.sliit.service.SharedPreferencesHelper;
 
 import de.yanniks.app.R;
+import de.yanniks.app.webview;
 
 
 import java.net.URL;
@@ -136,31 +137,7 @@ public class FeedWebActivity extends Activity {
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.opt_item_menu, menu);
-        
-        MenuItem channelsMenuItem = (MenuItem) menu.findItem(R.id.menu_opt_channels);
-        SubMenu subMenu = channelsMenuItem.getSubMenu();
-        
-        List<Feed> feeds = mRepositoryController.getFeeds();
-        Iterator<Feed> feedIterator = feeds.iterator();
-        Feed feed = null;
-        MenuItem channelSubMenuItem = null;
-        Intent intent = null;
-        int order = 0;
-		while (feedIterator.hasNext()) {
-			feed = feedIterator.next();
-			channelSubMenuItem = subMenu.add(SharedPreferencesHelper.CHANNEL_SUBMENU_GROUP, Menu.NONE, order, feed.getTitle());
-			
-			if (feed.getId() == SharedPreferencesHelper.getPrefTabFeedId(this))
-				channelSubMenuItem.setChecked(true);
-			
-			intent = new Intent(this, FeedTabActivity.class);
-	        intent.putExtra(DbSchema.FeedSchema._ID, feed.getId());
-			channelSubMenuItem.setIntent(intent);
-			
-			order++;
-		}
 
-        subMenu.setGroupCheckable(SharedPreferencesHelper.CHANNEL_SUBMENU_GROUP, true, true);
         MenuItem preferencesMenuItem = (MenuItem) menu.findItem(R.id.menu_opt_preferences);
         preferencesMenuItem.setIntent(new Intent(this,FeedPreferenceActivity.class));
        
@@ -172,8 +149,6 @@ public class FeedWebActivity extends Activity {
             case android.R.id.home:
                 onBackPressed();
                 break;
-	        case R.id.menu_opt_channels:
-	            return true;
 	        case R.id.menu_opt_preferences:
 	        	startActivity(item.getIntent());
 	            return true;
@@ -301,47 +276,57 @@ public class FeedWebActivity extends Activity {
     
     @Override
     protected Dialog onCreateDialog(int id) {
-    	Dialog dialog = null;
-    	CharSequence title = null;
-    	LayoutInflater inflater = null;
-    	View dialogLayout = null;
-    	AlertDialog.Builder builder = null;
+        Dialog dialog = null;
+        CharSequence title = null;
+        LayoutInflater inflater = null;
+        View dialogLayout = null;
+        AlertDialog.Builder builder = null;
         switch (id) {
-        	case SharedPreferencesHelper.DIALOG_ABOUT:
-	        	title = getString(R.string.app_name) + " - " + getString(R.string.version) + " " + SharedPreferencesHelper.getVersionName(this);
-	        	
-        		inflater = (LayoutInflater) getSystemService(LAYOUT_INFLATER_SERVICE);
-        		dialogLayout = inflater.inflate(R.layout.dialog_about, null);
-        		builder = new AlertDialog.Builder(this);
-        		builder.setView(dialogLayout)
-        			   .setTitle(title)
-        			   .setIcon(R.drawable.ic_launcher)
-        			   .setNeutralButton(R.string.close, new DialogInterface.OnClickListener() {
-        		           public void onClick(DialogInterface dialog, int id) {
-        		                dialog.cancel();
-        		           }
-        		       });
-        		dialog = builder.create();
-	        	break;
-        	case SharedPreferencesHelper.DIALOG_NO_CONNECTION:
-        		title = getString(R.string.error);
-        		inflater = (LayoutInflater) getSystemService(LAYOUT_INFLATER_SERVICE);
-        		dialogLayout = inflater.inflate(R.layout.dialog_no_connection, null);
-        		builder = new AlertDialog.Builder(this);
-        		builder.setView(dialogLayout)
-        			   .setTitle(title)
-        			   .setIcon(R.drawable.ic_launcher)
-        			   .setNeutralButton(R.string.ok, new DialogInterface.OnClickListener() {
-        		           public void onClick(DialogInterface dialog, int id) {
-        		                dialog.cancel();
-        		                finish();
-        		           }
-        		       });
-        		dialog = builder.create();
-        		break;
+            case SharedPreferencesHelper.DIALOG_ABOUT:
+                title = getResources().getText(R.string.app_name) + " - " + getResources().getText(R.string.version) + " " + SharedPreferencesHelper.getVersionName(this);
+                inflater = (LayoutInflater) getSystemService(LAYOUT_INFLATER_SERVICE);
+                dialogLayout = inflater.inflate(R.layout.dialog_about, null);
+                builder = new AlertDialog.Builder(this);
+                builder.setView(dialogLayout)
+                        .setTitle(title)
+                        .setIcon(R.drawable.ic_launcher)
+                        .setNegativeButton("Lizenztext", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                license();
+                            }
+                        })
+                        .setPositiveButton(R.string.close, new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                dialog.cancel();
+                            }
+                        });
+                dialog = builder.create();
+                break;
+            case SharedPreferencesHelper.DIALOG_NO_CONNECTION:
+                title = getString(R.string.error);
+                inflater = (LayoutInflater) getSystemService(LAYOUT_INFLATER_SERVICE);
+                dialogLayout = inflater.inflate(R.layout.dialog_no_connection, null);
+                builder = new AlertDialog.Builder(this);
+                builder.setView(dialogLayout)
+                        .setTitle(title)
+                        .setIcon(R.drawable.ic_launcher)
+                        .setNeutralButton(R.string.ok, new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                dialog.cancel();
+                            }
+                        });
+                dialog = builder.create();
+                break;
             default:
-            	dialog = null;
+                dialog = null;
         }
         return dialog;
     }
+    public void license () {
+        Intent webview = new Intent(this, de.yanniks.app.webview.class);
+        webview.putExtra("title", getString(R.string.licensetext));
+        webview.putExtra("url", "https://github.com/yanniks/yanniksdeapp-android/blob/gradle/LICENSE.md");
+        startActivity(webview);
+    }
+
 }

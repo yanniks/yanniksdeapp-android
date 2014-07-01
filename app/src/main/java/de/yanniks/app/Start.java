@@ -3,6 +3,7 @@ package de.yanniks.app;
 import de.yanniks.app.menu.NavDrawerListAdapter;
 
 import android.content.SharedPreferences;
+import android.net.Uri;
 import android.preference.PreferenceManager;
 import android.provider.Settings;
 import android.support.v4.app.FragmentActivity;
@@ -173,11 +174,13 @@ public class Start extends FragmentActivity {
         		builder.setView(dialogLayout)
         			   .setTitle(title)
         			   .setIcon(R.drawable.ic_launcher)
-        			   .setNeutralButton(R.string.close, new DialogInterface.OnClickListener() {
-        		           public void onClick(DialogInterface dialog, int id) {
-        		                dialog.cancel();
-        		           }
-        		       });
+                       .setNegativeButton("Lizenztext",new DialogInterface.OnClickListener() {
+                           public void onClick(DialogInterface dialog, int id) {license();}})
+        			   .setPositiveButton(R.string.close, new DialogInterface.OnClickListener() {
+                           public void onClick(DialogInterface dialog, int id) {
+                               dialog.cancel();
+                           }
+                       });
         		dialog = builder.create();
 	        	break;
         	case SharedPreferencesHelper.DIALOG_NO_CONNECTION:
@@ -199,6 +202,12 @@ public class Start extends FragmentActivity {
             	dialog = null;
         }
         return dialog;
+    }
+    public void license () {
+        Intent webview = new Intent(this, webview.class);
+        webview.putExtra("title", getString(R.string.licensetext));
+        webview.putExtra("url", "https://github.com/yanniks/yanniksdeapp-android/blob/gradle/LICENSE.md");
+        startActivity(webview);
     }
     public void online (final View view) {
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);

@@ -11,11 +11,6 @@
     <PreferenceCategory
         android:title="@string/rss" >
 	<ListPreference
-		android:title="@string/pref_start_channel_title"
-		android:summary="@string/pref_start_channel_descr"
-		android:key="startChannel"
-		android:defaultValue="1" />
-	<ListPreference
 		android:title="@string/pref_item_view_title"
 		android:summary="@string/pref_item_view_descr"
 		android:key="itemView"

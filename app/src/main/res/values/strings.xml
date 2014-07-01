@@ -53,16 +53,14 @@
     <string name="new_item_msg">There are new items</string>
     <string name="no_new_item_msg">There is no new item</string>
     <string name="no_new_fav_item_msg">There is no favorite item</string>
-    <string name="pref_start_channel_title">Default channel</string>
-    <string name="pref_start_channel_descr">The channel to display by default when you open the blog</string>
     <string name="pref_item_view_title">Offline/Online reading</string>
     <string name="pref_item_view_descr">Choose how you want to read the items</string>
-    <string name="pref_max_items_title">Items per channel</string>
-    <string name="pref_max_items_descr">The maximum number of items to display in a channel</string>
+    <string name="pref_max_items_title">Items</string>
+    <string name="pref_max_items_descr">The maximum number of items to display</string>
     <string name="pref_max_hours_title">Discard items</string>
     <string name="pref_max_hours_descr">Discard automatically items older than the specified period</string>
-    <string name="pref_update_period_title">Update channels</string>
-    <string name="pref_update_period_descr">Update the items of the channels after the specified period</string>
+    <string name="pref_update_period_title">Update blog</string>
+    <string name="pref_update_period_descr">Update the items of the blog after the specified period</string>
     <string name="app_pref_default_tab_feed_id">1</string>
     <string name="app_pref_default_splash_screen_duration">0</string>
     <string name="yannikehlert">- app and website developed by Yannik Ehlert</string>
@@ -75,6 +73,9 @@
     <string name="cdporter">CD porter</string>
     <string name="newmark">NEU</string>
     <string name="license">Released under AWTFPL</string>
+    <string name="openinfb">Open in Facebook app</string>
+    <string name="openinfb_desc">Would you like to open the page inside the Facebook app?</string>
+    <string name="licensetext">License text</string>
 
     <string name="drawer_open">Slider Menu Opened</string>
     <string name="drawer_close">Slider Menu Closed</string>

@@ -49,8 +49,6 @@
     <string name="new_item_msg">Hay nuevos artículos</string>
     <string name="no_new_item_msg">No hay nuevos artículos</string>
     <string name="no_new_fav_item_msg">No hay artículos preveridos</string>
-    <string name="pref_start_channel_title">Canal por defecto</string>
-    <string name="pref_start_channel_descr">El canal, que se muestra cuando se abre el blog.</string>
     <string name="pref_item_view_title">Leer Desconectado / En línea</string>
     <string name="pref_item_view_descr">Por favor, elija cómo desea leer el artículo</string>
     <string name="pref_max_items_title">Artículos por canal</string>
@@ -76,4 +74,7 @@
     <string name="enablessl">Activar SSL</string>
     <string name="enablessl_desc">Activar SSL para acceso la página - actualmente experimental</string>
     <string name="defsettings">Ajustes predeterminados</string>
+    <string name="openinfb">Abrir en la aplicación de Facebook</string>
+    <string name="openinfb_desc">¿Quieres abrir la página en la aplicación de Facebook?</string>
+    <string name="licensetext">texto de la licencia</string>
 </resources>

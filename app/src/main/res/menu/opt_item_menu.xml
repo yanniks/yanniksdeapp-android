@@ -1,11 +1,4 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:id="@+id/menu_opt_channels"
-          android:title="@string/menu_channels"
-          android:titleCondensed="@string/menu_channels"
-          android:icon="@android:drawable/ic_menu_sort_by_size"
-          android:showAsAction="ifRoom">
-    	<menu/>
-    </item>
     <item android:id="@+id/menu_opt_preferences"
           android:title="@string/menu_preferences"
           android:titleCondensed="@string/menu_preferences"

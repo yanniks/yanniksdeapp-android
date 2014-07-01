@@ -15,7 +15,7 @@ import de.yanniks.app.R;
 
 
 public class FeedPreferenceActivity extends PreferenceActivity {
-	
+
 	public static final String PREF_START_CHANNEL_KEY = "startChannel";
 	public static final String PREF_ITEM_VIEW_KEY = "itemView";
 	public static final String PREF_MAX_ITEMS_KEY = "maxItems";
@@ -40,24 +40,6 @@ public class FeedPreferenceActivity extends PreferenceActivity {
         mRepositoryController.open();
         
         addPreferencesFromResource(R.xml.preferences);
-        
-        ListPreference listPref = (ListPreference) findPreference(PREF_START_CHANNEL_KEY);
-        
-        List<Feed> feeds = mRepositoryController.getFeeds();
-        Iterator<Feed> feedIterator = feeds.iterator();
-        Feed feed = null;
-        CharSequence[] entries = new CharSequence[feeds.size()];
-        CharSequence[] entryValues = new CharSequence[feeds.size()];
-        int index = 0;
-        while (feedIterator.hasNext()) {
-			feed = feedIterator.next();
-			entries[index] = feed.getTitle();
-			entryValues[index] = Long.toString(feed.getId());
-			index++;
-		}
-        
-        listPref.setEntries(entries);
-        listPref.setEntryValues(entryValues);
     }
 	
 	@Override
