@@ -3,9 +3,7 @@ package de.yanniks.app;
 import de.yanniks.app.menu.NavDrawerListAdapter;
 
 import android.content.SharedPreferences;
-import android.net.Uri;
 import android.preference.PreferenceManager;
-import android.provider.Settings;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.content.Intent;
@@ -33,9 +31,6 @@ import android.widget.ListView;
 import android.support.v4.widget.DrawerLayout;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Calendar;
-import java.util.Date;
 
 import de.yanniks.app.menu.NavDrawerItem;
 
