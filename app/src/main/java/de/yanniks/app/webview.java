@@ -8,6 +8,7 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.MenuItem;
 import android.webkit.WebChromeClient;
@@ -22,7 +23,11 @@ public class webview extends Activity {
     public void onCreate(Bundle savedInstanceState) {
         final Intent intent = getIntent();
         final String title = intent.getStringExtra(("title"));
-        getActionBar().setDisplayHomeAsUpEnabled(true);
+        try {
+            getActionBar().setDisplayHomeAsUpEnabled(true);
+        } catch (NullPointerException e) {
+            Log.i("yanniks.deApp", "Cannot set ActionBar as Home");
+        }
         super.onCreate(savedInstanceState);
         setContentView(R.layout.webview);
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
@@ -30,7 +35,7 @@ public class webview extends Activity {
         if(intent.getStringExtra("url").contains("http")) {
             weburl = intent.getStringExtra("url");
         } else {
-            if (ssl == false) {
+            if (!ssl) {
                 weburl = "http://yanniks.de/cms/api.php?launch=app&lang=" + getString(R.string.lang) + "&page=" + intent.getStringExtra("url") + "&version=" + SharedPreferencesHelper.getVersionName(this);
             } else {
                 weburl = "https://yanniksde-updatechecker.rhcloud.com/cms/api.php?launch=app&lang=" + getString(R.string.lang) + "&page=" + intent.getStringExtra("url") + "&version=" + SharedPreferencesHelper.getVersionName(this);

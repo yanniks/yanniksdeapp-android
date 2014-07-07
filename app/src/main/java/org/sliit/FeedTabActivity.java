@@ -27,15 +27,14 @@ import org.xml.sax.SAXException;
 import org.sliit.domain.Feed;
 
 import de.yanniks.app.R;
-import de.yanniks.app.webview;
 
 import javax.xml.parsers.ParserConfigurationException;
 import java.io.IOException;
 import java.util.Date;
-import java.util.Iterator;
 import java.util.List;
 
 public class FeedTabActivity extends TabActivity implements OnItemClickListener {
+    ProgressDialog mDialog;
     TextView updated;
 	private static final String LOG_TAG = "FeedTabActivity";
 	
@@ -47,13 +46,17 @@ public class FeedTabActivity extends TabActivity implements OnItemClickListener 
 	private RepositoryController mRepositoryController;
 	
 	private boolean mIsOnline = true;
-	
-	
+
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        getActionBar().setDisplayHomeAsUpEnabled(true);
+        try {
+            getActionBar().setDisplayHomeAsUpEnabled(true);
+        } catch (NullPointerException e) {
+            Log.i("yanniks.deApp", "Cannot set ActionBar as Home");
+        }
         getActionBar().setTitle("yanniks.de Blog");
         
         mRepositoryController = new RepositoryController(this);
@@ -141,11 +144,8 @@ public class FeedTabActivity extends TabActivity implements OnItemClickListener 
     		diffTime = now.getTime() - feed.getRefresh().getTime();
     	else
     		return true;
-    	
-		if (diffTime > updatePeriod)
-			return true;
-		else
-			return false;
+
+        return diffTime > updatePeriod;
     }
     
     private void setTabs(String activeTab, String title) {
@@ -166,11 +166,11 @@ public class FeedTabActivity extends TabActivity implements OnItemClickListener 
     	}
     }
 
-    private List<Item> fillData() {
+    private void fillData() {
     	if (getTabHost().getCurrentTabTag().equals(TAB_FAV_TAG))
-    		return fillListData(R.id.favoritelist);
+    		fillListData(R.id.favoritelist);
     	else
-    		return fillListData(R.id.feedlist);
+    		fillListData(R.id.feedlist);
     }
     
     private List<Item> fillListData(int listResource) {
@@ -228,7 +228,7 @@ public class FeedTabActivity extends TabActivity implements OnItemClickListener 
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.opt_tab_menu, menu);
         
-        MenuItem preferencesMenuItem = (MenuItem) menu.findItem(R.id.menu_opt_preferences);
+        MenuItem preferencesMenuItem = menu.findItem(R.id.menu_opt_preferences);
         preferencesMenuItem.setIntent(new Intent(this,FeedPreferenceActivity.class));
         
         return true;
@@ -476,25 +476,28 @@ public class FeedTabActivity extends TabActivity implements OnItemClickListener 
 	        	
         	} catch (IOException ioe) {
         		Log.e(LOG_TAG,"",ioe);
-        		return new Boolean(false);
+        		return false;
             } catch (SAXException se) {
             	Log.e(LOG_TAG,"",se);
-            	return new Boolean(false);
+            	return false;
             } catch (ParserConfigurationException pce) {
             	Log.e(LOG_TAG,"",pce);
-            	return new Boolean(false);
+            	return false;
             }
             
-            return new Boolean(true);
+            return true;
         }
         
         protected void onPreExecute() {
-        	showDialog(SharedPreferencesHelper.DIALOG_UPDATE_PROGRESS);
+            mDialog = new ProgressDialog(FeedTabActivity.this);
+            mDialog.setMessage(getString(R.string.loading));
+            mDialog.setCancelable(false);
+            mDialog.show();
         }
 
         protected void onPostExecute(Boolean result) {
         	fillListData(R.id.feedlist);
-        	dismissDialog(SharedPreferencesHelper.DIALOG_UPDATE_PROGRESS);
+        	mDialog.dismiss();
         	
         	long lastItemIdAfterUpdate = -1;
         	Item lastItem = mRepositoryController.getLastItem(feedId);

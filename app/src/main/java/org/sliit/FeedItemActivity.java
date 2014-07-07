@@ -9,6 +9,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.text.format.DateFormat;
+import android.util.Log;
 import android.view.*;
 import android.view.ContextMenu.ContextMenuInfo;
 import android.view.View.OnClickListener;
@@ -22,25 +23,23 @@ import org.sliit.service.RepositoryController;
 import org.sliit.service.DbSchema;
 import org.sliit.service.SharedPreferencesHelper;
 import de.yanniks.app.R;
-import de.yanniks.app.webview;
 
 import java.util.Date;
-import java.util.Iterator;
-import java.util.List;
 
 public class FeedItemActivity extends Activity {
-
-	private static final String LOG_TAG = "FeedItemActivity";
 	
 	private RepositoryController mRepositoryController;
 	private long mItemId = -1;
-    TextView mCustomTitle;
 	
     @Override
     public void onCreate(Bundle savedInstanceState) {
     	super.onCreate(savedInstanceState);
 
-        getActionBar().setDisplayHomeAsUpEnabled(true);
+        try {
+            getActionBar().setDisplayHomeAsUpEnabled(true);
+        } catch (NullPointerException e) {
+            Log.i("yanniks.deApp", "Cannot set ActionBar as Home");
+        }
         getActionBar().setTitle("yanniks.de Blog");
     	
         mRepositoryController = new RepositoryController(this);
@@ -159,7 +158,7 @@ public class FeedItemActivity extends Activity {
         inflater.inflate(R.menu.opt_item_menu, menu);
 
      	// Preferences menu item
-        MenuItem preferencesMenuItem = (MenuItem) menu.findItem(R.id.menu_opt_preferences);
+        MenuItem preferencesMenuItem = menu.findItem(R.id.menu_opt_preferences);
         preferencesMenuItem.setIntent(new Intent(this,FeedPreferenceActivity.class));
        
         return true;

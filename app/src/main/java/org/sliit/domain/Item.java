@@ -11,7 +11,6 @@ import java.util.List;
 
 
 public class Item {
-	private static final String LOG_TAG = "Item";
 	
 	private long mId = -1;
 	private URL mLink;
@@ -28,21 +27,6 @@ public class Item {
 	public Item() {
 		mEnclosures = new ArrayList<Enclosure>();
 		mPubdate = new Date();
-	}
-	
-	public Item(long id, URL link, String guid, String title, String description, String content, URL image, Date pubdate, boolean favorite, boolean read, List<Enclosure> enclosures) {
-		super();
-		this.mId = id;
-		this.mLink = link;
-		this.mGuid = guid;
-		this.mTitle = title;
-		this.mDescription = description;
-		this.mContent = content;
-		this.mImage = image;
-		this.mPubdate = pubdate;
-		this.mFavorite = favorite;
-		this.mRead = read;
-		this.mEnclosures = enclosures;
 	}
 	
 	public void setId(long id) {
@@ -108,57 +92,18 @@ public class Item {
 	public Date getPubdate() {
 		return this.mPubdate;
 	}
-	
-	public void favorite() {
-		this.mFavorite = true;
-	}
-	
-	public void unfavorite() {
-		this.mFavorite = false;
-	}
 
-	/*
-	public void setFavorites(boolean favorite) {
-		if (!favorite)
-			this.mFavorite = false;
-		else
-			this.mFavorite = true;
-	}
-	*/
 	
 	public void setFavorite(int state) {
-		if (state == DbSchema.OFF)
-			this.mFavorite = false;
-		else
-			this.mFavorite = true;
+        this.mFavorite = state != DbSchema.OFF;
 	}
 	
 	public boolean isFavorite() {
 		return this.mFavorite;
 	}
 	
-	public void read() {
-		this.mRead = true;
-	}
-	
-	public void unread() {
-		this.mRead = false;
-	}
-	
-	/*
-	public void setRead(boolean read) {
-		if (!read)
-			this.mRead = false;
-		else
-			this.mRead = true;
-	}
-	*/
-	
 	public void setRead(int state) {
-		if (state == DbSchema.OFF)
-			this.mRead = false;
-		else
-			this.mRead = true;
+        this.mRead = state != DbSchema.OFF;
 	}
 	
 	public boolean isRead() {
@@ -180,10 +125,9 @@ public class Item {
 	public String toString() {
 		String s =  "{ID=" + this.mId + " link=" + this.mLink.toString() + " GUID=" + this.mGuid + " title=" + this.mTitle + " description=" + this.mDescription + " content=" + this.mContent + " image=" + this.mImage.toString() + " pubdate=" + this.mPubdate.toString() + " favorite=" + this.mFavorite + " read=" + this.mRead + "}";
 		s = s + " items={";
-		Iterator<Enclosure> iterator = this.mEnclosures.iterator();
-		while (iterator.hasNext()) {
-			s = s + iterator.next().toString();
-		}
+        for (Enclosure mEnclosure : this.mEnclosures) {
+            s = s + mEnclosure.toString();
+        }
 		s = s + "}}";
 		return s;
 	}

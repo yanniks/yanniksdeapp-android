@@ -3,6 +3,7 @@ package de.yanniks.app;
 import de.yanniks.app.menu.NavDrawerListAdapter;
 
 import android.content.SharedPreferences;
+import android.os.Build;
 import android.preference.PreferenceManager;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
@@ -29,6 +30,10 @@ import android.content.DialogInterface;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.support.v4.widget.DrawerLayout;
+import android.widget.Toast;
+
+import com.github.amlcurran.showcaseview.ShowcaseView;
+import com.github.amlcurran.showcaseview.targets.ActionViewTarget;
 
 import java.util.ArrayList;
 
@@ -44,30 +49,44 @@ public class Start extends FragmentActivity {
     private CharSequence mTitle;
 
     // slide menu items
-    private String[] navMenuTitles;
     private String[] navMenuTitles2;
-    private TypedArray navMenuIcons;
-
-    private ArrayList<NavDrawerItem> navDrawerItems;
-    private NavDrawerListAdapter adapter;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.menu);
         mTitle = getTitle();
+        boolean firstrun = getSharedPreferences("PREFERENCE", MODE_PRIVATE).getBoolean("firstrun", true);
+        if (firstrun){
+            if(Build.VERSION.SDK_INT > 19) {
+                Toast.makeText(getApplicationContext(), "This Android version is not fully supported yet!",
+                        Toast.LENGTH_LONG).show();
+            } else {
+                new ShowcaseView.Builder(this)
+                        .setTarget(new ActionViewTarget(this, ActionViewTarget.Type.HOME))
+                        .setContentTitle(getString(R.string.wkommen))
+                        .setContentText(getString(R.string.wkommen_desc))
+                        .build();
+
+                getSharedPreferences("PREFERENCE", MODE_PRIVATE)
+                        .edit()
+                        .putBoolean("firstrun", false)
+                        .commit();
+            }
+        }
+
 
         // load slide menu items
-        navMenuTitles = getResources().getStringArray(R.array.nav_drawer_items);
+        String[] navMenuTitles = getResources().getStringArray(R.array.nav_drawer_items);
         navMenuTitles2 = getResources().getStringArray(R.array.nav_drawer_items_title);
 
         // nav drawer icons from resources
-        navMenuIcons = getResources()
+        TypedArray navMenuIcons = getResources()
                 .obtainTypedArray(R.array.nav_drawer_icons);
 
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         mDrawerList = (ListView) findViewById(R.id.list_slidermenu);
 
-        navDrawerItems = new ArrayList<NavDrawerItem>();
+        ArrayList<NavDrawerItem> navDrawerItems = new ArrayList<NavDrawerItem>();
 
         navDrawerItems.add(new NavDrawerItem(navMenuTitles[0], navMenuIcons.getResourceId(0, -1)));
         navDrawerItems.add(new NavDrawerItem(navMenuTitles[1], navMenuIcons.getResourceId(1, -1)));
@@ -79,12 +98,16 @@ public class Start extends FragmentActivity {
         navMenuIcons.recycle();
 
         // setting the nav drawer list adapter
-        adapter = new NavDrawerListAdapter(getApplicationContext(),
+        NavDrawerListAdapter adapter = new NavDrawerListAdapter(getApplicationContext(),
                 navDrawerItems);
         mDrawerList.setAdapter(adapter);
 
         // enabling action bar app icon and behaving it as toggle button
-        getActionBar().setDisplayHomeAsUpEnabled(true);
+        try {
+            getActionBar().setDisplayHomeAsUpEnabled(true);
+        } catch (NullPointerException e) {
+            Log.i("yanniks.deApp", "Cannot set ActionBar as Home");
+        }
         getActionBar().setHomeButtonEnabled(true);
 
         mDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout,
@@ -209,7 +232,7 @@ public class Start extends FragmentActivity {
         Intent webview = new Intent(this, webview.class);
         webview.putExtra ("title",getString(R.string.impress));
         ssl = prefs.getBoolean("usessl",false);
-        if (ssl == false) {
+        if (!ssl) {
             webview.putExtra("url", "http://yanniks.de/cms/api.php?lang=" + getString(R.string.lang) + "&launch=app&page=impressum" + "&version=" + SharedPreferencesHelper.getVersionName(this));
         } else {
             Log.i("yanniks.deApp","Using SSL");
@@ -236,7 +259,7 @@ public class Start extends FragmentActivity {
             case 3:
                 Bundle data = new Bundle();
                 ssl = prefs.getBoolean("usessl",false);
-                if (ssl == false) {
+                if (!ssl) {
                     data.putString("url", "http://yanniks.de/cms/api.php?launch=app&lang=" + getString(R.string.lang) + "&page=cydia" + "&version=" + SharedPreferencesHelper.getVersionName(this));
                 } else {
                     Log.i("yanniks.deApp","Using SSL");
@@ -249,7 +272,7 @@ public class Start extends FragmentActivity {
             case 4:
                 Bundle data2 = new Bundle();
                 ssl = prefs.getBoolean("usessl",false);
-                if (ssl == false) {
+                if (!ssl) {
                     data2.putString("url","http://yanniks.de/cms/api.php?launch=app&lang=" + getString(R.string.lang) + "&page=cdporter" + "&version=" + SharedPreferencesHelper.getVersionName(this));
                 } else {
                     Log.i("yanniks.deApp","Using SSL");
@@ -282,7 +305,11 @@ public class Start extends FragmentActivity {
     @Override
     public void setTitle(CharSequence title) {
         mTitle = title;
-        getActionBar().setTitle(mTitle);
+        try {
+            getActionBar().setTitle(mTitle);
+        } catch (NullPointerException e) {
+            Log.i("yanniks.deApp", "Cannot set ActionBar as Home");
+        }
     }
 
     @Override

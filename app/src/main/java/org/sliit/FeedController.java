@@ -26,8 +26,6 @@ import java.text.SimpleDateFormat;
 import java.util.*;
 
 public class FeedController extends DefaultHandler {
-
-	private static final String LOG_TAG = "FeedController";
 	
 	private Feed mFeed;
 	private Item mItem;
@@ -253,12 +251,12 @@ public class FeedController extends DefaultHandler {
 	private Spanned removeContentSpanObjects(StringBuffer sb) {
 		SpannableStringBuilder spannedStr = (SpannableStringBuilder)Html.fromHtml(sb.toString().trim());
 		Object[] spannedObjects = spannedStr.getSpans(0,spannedStr.length(),Object.class);
-		for (int i = 0; i < spannedObjects.length; i++) {
-			//if (!(spannedObjects[i] instanceof URLSpan) && !(spannedObjects[i] instanceof StyleSpan))
-			if (spannedObjects[i] instanceof ImageSpan)
-				spannedStr.replace(spannedStr.getSpanStart(spannedObjects[i]), spannedStr.getSpanEnd(spannedObjects[i]), "");
-				//spannedStr.removeSpan(spannedObjects[i]);
-		}	
+        for (Object spannedObject : spannedObjects) {
+            //if (!(spannedObjects[i] instanceof URLSpan) && !(spannedObjects[i] instanceof StyleSpan))
+            if (spannedObject instanceof ImageSpan)
+                spannedStr.replace(spannedStr.getSpanStart(spannedObject), spannedStr.getSpanEnd(spannedObject), "");
+            //spannedStr.removeSpan(spannedObjects[i]);
+        }
 		//spannedStr.clearSpans();
 		return spannedStr;
 	}

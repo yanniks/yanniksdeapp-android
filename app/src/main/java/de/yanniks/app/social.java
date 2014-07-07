@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.GestureDetector;
 import android.view.MenuItem;
 import android.view.MotionEvent;
@@ -18,7 +19,11 @@ public class social extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.social);
-        getActionBar().setDisplayHomeAsUpEnabled(true);
+        try {
+            getActionBar().setDisplayHomeAsUpEnabled(true);
+        } catch (NullPointerException e) {
+            Log.i("yanniks.deApp", "Cannot set ActionBar as Home");
+        }
         gestureDetector = new GestureDetector(this, new GestureDetector.SimpleOnGestureListener() {
             @Override
             public boolean onDoubleTap(MotionEvent e) {
@@ -27,20 +32,20 @@ public class social extends Activity {
             }
         });
 	}
-    private boolean isPackageInstalled(String packagename) {
+    private boolean isPackageInstalled() {
         PackageManager pm = getPackageManager();
         try {
-            pm.getPackageInfo(packagename, PackageManager.GET_ACTIVITIES);
+            pm.getPackageInfo("com.facebook.katana", PackageManager.GET_ACTIVITIES);
             return true;
         } catch (PackageManager.NameNotFoundException e) {
             return false;
         }
     }
-	public void facebook (final View view) {
-        if (isPackageInstalled("com.facebook.katana")) {
+	public void facebook (View view) {
+        if (isPackageInstalled()) {
             new AlertDialog.Builder(this)
                     .setTitle(getString(R.string.openinfb))
-                    .setMessage("")
+                    .setMessage(getString(R.string.openinfb_desc))
                     .setPositiveButton(R.string.yes, new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int which) {
                             startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("fb://page/132390900157794")));
@@ -56,17 +61,15 @@ public class social extends Activity {
    		startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.facebook.com/yanniks.de")));
    	    }
 }
-	public void gplus (final View view) {
+	public void gplus (View view) {
 		startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://plus.google.com/113445355917245195373")));
 	}
-	public void twitter (final View view) {
+	public void twitter (View view) {
 		startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("http://twitter.com/yanniksde")));
 	}
     @Override
     public boolean onTouchEvent(MotionEvent event) {
-        if (!gestureDetector.onTouchEvent(event))
-            return super.onTouchEvent(event);
-        return true;
+        return gestureDetector.onTouchEvent(event) || super.onTouchEvent(event);
     }
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {

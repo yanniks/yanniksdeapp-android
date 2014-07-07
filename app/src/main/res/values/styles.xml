@@ -19,13 +19,13 @@
         <item name="android:paddingBottom">5dp</item>
     </style>
 	<style name="item_common_title" parent="@style/item_common_text">
-        <item name="android:textSize">15dp</item>
+        <item name="android:textSize">15sp</item>
     </style>
      <style name="item_common_channel" parent="@style/item_common_text">
-        <item name="android:textSize">11dp</item>
+        <item name="android:textSize">11sp</item>
     </style>
     <style name="item_common_pubdate" parent="@style/item_common_text">
-        <item name="android:textSize">11dp</item>
+        <item name="android:textSize">11sp</item>
     </style>
     <style name="item_common_fav_icon">
         <item name="android:paddingRight">15dp</item>
@@ -67,7 +67,7 @@
         <item name="android:paddingTop">10dp</item>
         <item name="android:paddingBottom">5dp</item>
         <item name="android:textStyle">bold</item>
-        <item name="android:textSize">17dp</item>
+        <item name="android:textSize">17sp</item>
         <item name="android:clickable">true</item>
         <item name="android:focusable">true</item>
         <item name="android:focusableInTouchMode">true</item>
@@ -75,7 +75,7 @@
     </style>
     <style name="item_view_subtitle_text" parent="@style/item_view_common_padding">
         <item name="android:textStyle">italic</item>
-        <item name="android:textSize">12dp</item>
+        <item name="android:textSize">12sp</item>
     </style>
     <style name="item_view_channel" parent="@style/item_view_subtitle_text">
         <item name="android:clickable">true</item>
@@ -88,7 +88,7 @@
     </style>
     <style name="item_view_content" parent="@style/item_view_common_padding">
     	<item name="android:paddingTop">10dp</item>
-    	<item name="android:textSize">16dp</item>
+    	<item name="android:textSize">16sp</item>
         <item name="android:autoLink">web|email</item>
         <item name="android:textColorLink">@color/main_color</item>
         <item name="android:textColor">@color/color2</item>
@@ -96,7 +96,7 @@
     <style name="item_view_read" parent="@style/item_view_common_padding">
     	<item name="android:paddingTop">10dp</item>
     	<item name="android:paddingBottom">10dp</item>
-    	<item name="android:textSize">17dp</item>
+    	<item name="android:textSize">17sp</item>
     	<item name="android:textStyle">bold|italic</item>
         <item name="android:clickable">true</item>
         <item name="android:focusableInTouchMode">true</item>

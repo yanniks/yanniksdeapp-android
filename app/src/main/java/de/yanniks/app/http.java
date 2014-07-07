@@ -12,8 +12,7 @@ public class http extends Activity {
         setContentView(R.layout.start);
         try {
             Uri data = getIntent().getData();
-            if (data.equals(null)) {
-            } else {
+            if (data != null) {
                 String yanniksdepath = data.getPath();
                 if (!yanniksdepath.isEmpty()) {
                     if (yanniksdepath.contains("impressum")) {
@@ -38,7 +37,11 @@ public class http extends Activity {
                             String webview4 = webview3.replace(".html", "");
                             String webviewurl = webview4.replace(".htm", "");
                             Intent webview = new Intent(this, webview.class);
-                            webview.putExtra("title", getString(R.string.webview));
+                            if (webviewurl.contains("disclaimer")) {
+                                webview.putExtra("title","Disclaimer");
+                            } else {
+                                webview.putExtra("title", getString(R.string.webview));
+                            }
                             webview.putExtra("url", webviewurl);
                             startActivity(webview);
                         }
@@ -58,6 +61,7 @@ public class http extends Activity {
                 }
             }
         } catch (NullPointerException e) {
+            finish();
         }
         finish();
 	}

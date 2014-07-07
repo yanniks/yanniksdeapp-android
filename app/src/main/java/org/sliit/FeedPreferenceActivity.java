@@ -1,14 +1,10 @@
 package org.sliit;
 
-import java.util.Iterator;
-import java.util.List;
-
-import org.sliit.domain.Feed;
 import org.sliit.service.RepositoryController;
 
 import android.os.Bundle;
-import android.preference.ListPreference;
 import android.preference.PreferenceActivity;
+import android.util.Log;
 import android.view.MenuItem;
 
 import de.yanniks.app.R;
@@ -34,7 +30,11 @@ public class FeedPreferenceActivity extends PreferenceActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        getActionBar().setDisplayHomeAsUpEnabled(true);
+        try {
+            getActionBar().setDisplayHomeAsUpEnabled(true);
+        } catch (NullPointerException e) {
+            Log.i("yanniks.deApp", "Cannot set ActionBar as Home");
+        }
         
         mRepositoryController = new RepositoryController(this);
         mRepositoryController.open();

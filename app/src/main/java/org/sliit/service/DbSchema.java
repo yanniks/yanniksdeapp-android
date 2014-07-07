@@ -21,7 +21,6 @@ public final class DbSchema {
 		public static final String COLUMN_REFRESH = "refresh";
 		public static final String COLUMN_ENABLE = "enable";
 		public static final String CREATE_TABLE = "CREATE TABLE " + TABLE_NAME + " (" + _ID + " INTEGER PRIMARY KEY AUTOINCREMENT," + COLUMN_URL + " TEXT NOT NULL," + COLUMN_HOMEPAGE + " TEXT NOT NULL," + COLUMN_TITLE + " TEXT NOT NULL," + COLUMN_TYPE + " TEXT," + COLUMN_REFRESH + " INTEGER," + COLUMN_ENABLE + " INTEGER NOT NULL);";
-		public static final String DROP_TABLE = "DROP TABLE IF EXISTS " + TABLE_NAME;
 	}
 	
 	public static final class ItemSchema implements BaseColumns {
@@ -37,7 +36,6 @@ public final class DbSchema {
 		public static final String COLUMN_FAVORITE = "favorite";
 		public static final String COLUMN_READ = "read";
 		public static final String CREATE_TABLE = "CREATE TABLE " + TABLE_NAME + " (" + _ID + " INTEGER PRIMARY KEY AUTOINCREMENT," + COLUMN_FEED_ID + " INTEGER NOT NULL," + COLUMN_LINK + " TEXT NOT NULL," + COLUMN_GUID + " TEXT NOT NULL," + COLUMN_TITLE + " TEXT NOT NULL," + COLUMN_DESCRIPTION + " TEXT," + COLUMN_CONTENT + " TEXT," + COLUMN_IMAGE + " TEXT," + COLUMN_PUBDATE + " INTEGER NOT NULL," + COLUMN_FAVORITE + " INTEGER NOT NULL," + COLUMN_READ + " INTEGER NOT NULL);";
-		public static final String DROP_TABLE = "DROP TABLE IF EXISTS " + TABLE_NAME;
 	}
 	
 	public static final class EnclosureSchema implements BaseColumns {
@@ -46,6 +44,5 @@ public final class DbSchema {
 		public static final String COLUMN_MIME = "mime";
 		public static final String COLUMN_URL = "URL";
 		public static final String CREATE_TABLE = "CREATE TABLE " + TABLE_NAME + " (" + _ID + " INTEGER PRIMARY KEY AUTOINCREMENT," + COLUMN_ITEM_ID + " INTEGER NOT NULL," + COLUMN_MIME + " TEXT NOT NULL," + COLUMN_URL + " TEXT NOT NULL);";
-		public static final String DROP_TABLE = "DROP TABLE IF EXISTS " + TABLE_NAME;
 	}
 }

@@ -5,6 +5,7 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -36,7 +37,7 @@ public class webviewfragment extends Fragment {
         if (curURL != null) {
             WebView ww = (WebView) view.findViewById(R.id.webview);
             ww.setWebViewClient(new webClient());
-            if (!isOnline() == true) {
+            if (!isOnline()) {
                 ww.loadUrl("file:///android_asset/error-" + getString(R.string.lang) + ".html");
             } else {
                 ww.loadUrl(curURL);
@@ -46,7 +47,11 @@ public class webviewfragment extends Fragment {
                     getActivity().setTitle(getString(R.string.loading));
                     getActivity().setProgress(progress * 100);
                     if(progress == 100)
-                        getActivity().getActionBar().setTitle(title);
+                        try {
+                            getActivity().getActionBar().setTitle(title);
+                        } catch (NullPointerException e) {
+                            Log.i("yanniks.deApp", "Cannot set ActionBar as Home");
+                        }
                 }
             });
         }
@@ -58,11 +63,7 @@ public class webviewfragment extends Fragment {
                 .getSystemService(Context.CONNECTIVITY_SERVICE);
 
         NetworkInfo i = cm.getActiveNetworkInfo();
-        if ((i == null) || (!i.isConnected())) {
-            return false;
-        } else {
-            return true;
-        }
+        return !((i == null) || (!i.isConnected()));
     }
     private class webClient extends WebViewClient {
         @Override

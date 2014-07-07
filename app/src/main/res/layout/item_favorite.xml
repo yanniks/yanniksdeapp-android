@@ -7,7 +7,7 @@
 	<RelativeLayout
 		android:id="@+id/item"
 		android:layout_width="fill_parent" 
-		android:layout_height="fill_parent"
+		android:layout_height="wrap_content"
 		android:background="#FFFFFF">
 	    <TextView
 			android:id="@+id/title"
@@ -28,6 +28,7 @@
 			style="@style/item_view_pubdate"/>
 		<ImageView 
     		android:id="@+id/fav"
+            android:contentDescription="@string/favorites"
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
 			android:layout_toRightOf="@id/pubdate"

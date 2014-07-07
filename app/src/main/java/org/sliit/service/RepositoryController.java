@@ -33,7 +33,7 @@ public class RepositoryController {
     
 	private static class DbHelper extends SQLiteOpenHelper {
 		private static final String LOG_TAG = "DbHelper";
-    	private RepositoryController mDbfa;
+    	private final RepositoryController mDbfa;
         
         DbHelper(RepositoryController dbfa) {
           super(dbfa.mCtx, DbSchema.DATABASE_NAME, null, DbSchema.DATABASE_VERSION);
@@ -46,7 +46,7 @@ public class RepositoryController {
             try {
                 List<Feed> resourceFeeds = getOPMLResourceFeeds();
                 populateFeeds(db, resourceFeeds);
-                List<Feed> userFeeds = getOPMLUserFeeds();
+                List<Feed> userFeeds = null;
                 populateFeeds(db, userFeeds);
             } catch(XmlPullParserException xppe) {
                 Log.e(LOG_TAG,"",xppe);
@@ -90,12 +90,12 @@ public class RepositoryController {
         					itemDescription = itemCursor.getString(itemCursor.getColumnIndex(DbSchema.ItemSchema.COLUMN_DESCRIPTION));
         				
         				if (itemDescription != null) {
-		                	SpannableStringBuilder spannedStr = (SpannableStringBuilder)Html.fromHtml(itemDescription.toString().trim());
+		                	SpannableStringBuilder spannedStr = (SpannableStringBuilder)Html.fromHtml(itemDescription.trim());
 			        		Object[] spannedObjects = spannedStr.getSpans(0,spannedStr.length(),Object.class);
-			        		for (int i = 0; i < spannedObjects.length; i++) {
-			        			if (spannedObjects[i] instanceof ImageSpan)
-			        				spannedStr.replace(spannedStr.getSpanStart(spannedObjects[i]), spannedStr.getSpanEnd(spannedObjects[i]), "");
-			        		}
+                            for (Object spannedObject : spannedObjects) {
+                                if (spannedObject instanceof ImageSpan)
+                                    spannedStr.replace(spannedStr.getSpanStart(spannedObject), spannedStr.getSpanEnd(spannedObject), "");
+                            }
 			        		
 			        		itemDescription = spannedStr.toString().trim() + System.getProperty("line.separator");
 			        		itemContent = spannedStr.toString().trim() + System.getProperty("line.separator");
@@ -158,11 +158,6 @@ public class RepositoryController {
             return feeds;
         }
         
-        private List<Feed> getOPMLUserFeeds() {
-            // Not yet implemented
-            return null;
-        }
-        
         private void populateFeeds(SQLiteDatabase db, List<Feed> feeds) {
             if (feeds != null) {
                 Iterator<Feed> feedsIterator = feeds.iterator();
@@ -208,7 +203,7 @@ public class RepositoryController {
             Cursor cursor = db.query(DbSchema.FeedSchema.TABLE_NAME, null, DbSchema.FeedSchema.COLUMN_URL + "=?", new String[]{feed.getURL().toString()}, null, null, null);
             if (cursor.moveToFirst())
                     feedId = cursor.getLong(cursor.getColumnIndex(DbSchema.FeedSchema._ID));
-            
+
             if (cursor != null)
                     cursor.close();
             
@@ -262,23 +257,6 @@ public class RepositoryController {
 			if (maxTime > 0 && diffTime > maxTime)
 				removeItem(nextItem.getId());
 		}
-    }
-    
-    public List<Feed> getFeeds() {
-		List<Feed> feeds = new ArrayList<Feed>();
-		Cursor cursor = mDb.query(DbSchema.FeedSchema.TABLE_NAME, new String[]{DbSchema.FeedSchema._ID}, null, null, null, null, DbSchema.FeedSchema._ID + DbSchema.SORT_ASC);
-		cursor.moveToFirst();
-		while (!cursor.isAfterLast()) {
-			Feed feed = getFeed(cursor.getLong(cursor.getColumnIndex(DbSchema.FeedSchema._ID)));
-			if (feed != null)
-				feeds.add(feed);
-			cursor.moveToNext();
-		}
-		
-		if (cursor != null)
-			cursor.close();
-		
-		return feeds;
     }
   
 	public Feed getFeed(long id) {
@@ -345,20 +323,15 @@ public class RepositoryController {
     	return values;
     }
     
-    public long addFeed(Feed feed) {
-        return addFeed(getContentValues(feed),feed.getItems());
-    }
-    
     public long addFeed(ContentValues values, List<Item> items) {
     	long feedId = mDb.insert(DbSchema.FeedSchema.TABLE_NAME, null, values);
         if (feedId == -1)
         	Log.e(LOG_TAG, "Feed '" + values.getAsString(DbSchema.ItemSchema.COLUMN_TITLE) + "' could not be inserted into the database. Feed values: " + values.toString());
         
         if (items != null && feedId != -1) {
-    		Iterator<Item> iterator = items.iterator();
-    		while (iterator.hasNext()) {
-    			addItem(feedId,iterator.next());
-    		}
+            for (Item item : items) {
+                addItem(feedId, item);
+            }
     	}
         
         return feedId;
@@ -374,8 +347,8 @@ public class RepositoryController {
     	return values;
     }
     
-    public boolean updateFeed(Feed feed) {  	
-    	return updateFeed(feed.getId(), getUpdateContentValues(feed), feed.getItems());
+    public void updateFeed(Feed feed) {
+    	updateFeed(feed.getId(), getUpdateContentValues(feed), feed.getItems());
     }
     
     public boolean updateFeed(long id, ContentValues values, List<Item> items) {
@@ -409,11 +382,6 @@ public class RepositoryController {
 			cursor.close();
     	
     	return hasItem;
-    }
-    
-    
-    public boolean removeFeed(Feed feed) {
-    	return removeFeed(feed.getId());
     }
     
     public boolean removeFeed(long id) {
@@ -526,11 +494,8 @@ public class RepositoryController {
 						nextItemId = itemId;
 						nextItemFound = true;
 					}
-					
-					if (itemId == currentItemId)
-						isCurrentItem = true;
-					else
-						isCurrentItem = false;
+
+                    isCurrentItem = itemId == currentItemId;
 
 					cursor.moveToNext();
 				}
@@ -564,11 +529,8 @@ public class RepositoryController {
 						previousItemId = itemId;
 						previousItemFound = true;
 					}
-					
-					if (itemId == currentItemId)
-						isCurrentItem = true;
-					else
-						isCurrentItem = false;
+
+                    isCurrentItem = itemId == currentItemId;
 
 					cursor.moveToPrevious();
 				}
@@ -719,8 +681,8 @@ public class RepositoryController {
     	return values;
     }
     
-    public long addItem(long feedId, Item item) {
-    	return addItem(feedId,getContentValues(feedId, item), item.getEnclosures());
+    public void addItem(long feedId, Item item) {
+    	addItem(feedId,getContentValues(feedId, item), item.getEnclosures());
     }
     
     public long addItem(long feedId, ContentValues values, List<Enclosure> enclosures) {
@@ -729,20 +691,15 @@ public class RepositoryController {
     		Log.e(LOG_TAG,"Item '" + values.getAsString(DbSchema.ItemSchema.COLUMN_TITLE) + "' for Feed id " + values.getAsLong(DbSchema.ItemSchema.COLUMN_FEED_ID) + " could not be inserted into the database. Item values: " + values.toString());
     	
     	 if (enclosures != null && itemId != -1) {
-     		Iterator<Enclosure> iterator = enclosures.iterator();
-     		while (iterator.hasNext()) {
-     			addEnclosure(itemId,iterator.next());
-     		}
+             for (Enclosure enclosure : enclosures) {
+                 addEnclosure(itemId, enclosure);
+             }
      	}
     	
     	return itemId;
     }
-
-    public boolean updateItem(long feedId, Item item) {
-    	return updateItem(item.getId(), getContentValues(feedId, item), item.getEnclosures());
-    }
     
-    public boolean updateItem(long id, ContentValues values, List<Enclosure> enclosures) {
+    public void updateItem(long id, ContentValues values, List<Enclosure> enclosures) {
     	boolean itemUpdated = (mDb.update(DbSchema.ItemSchema.TABLE_NAME, values, DbSchema.ItemSchema._ID + "=?", new String[]{Long.toString(id)}) > 0);
     	
     	if (itemUpdated && enclosures != null) {
@@ -753,25 +710,21 @@ public class RepositoryController {
     			updateEnclosure(values.getAsLong(DbSchema.ItemSchema._ID), enclosure);
     		}
     	}
-    	
-    	return itemUpdated;
     }
     
-    public boolean removeItems(long feedId) {
+    public void removeItems(long feedId) {
     	List<Item> items = getItems(feedId, 1, -1);
-    	return removeItems(items);
-    	//return (mDb.delete(DbSchema.ItemSchema.TABLE_NAME, DbSchema.ItemSchema.COLUMN_FEED_ID + "=?", new String[]{Long.toString(feedId)}) > 0);
+    	removeItems(items);
     }
     
     public boolean removeItems(List<Item> items) {
     	boolean allItemRemoved = true;
     	Item item;
-    	Iterator<Item> iterator = items.iterator();
-    	while (iterator.hasNext()) {
-    		item = iterator.next();
-    		if (!removeItem(item.getId()))
-    			allItemRemoved = false;
-    	}
+        for (Item item1 : items) {
+            item = item1;
+            if (!removeItem(item.getId()))
+                allItemRemoved = false;
+        }
     	return allItemRemoved;
     }
     
@@ -839,8 +792,8 @@ public class RepositoryController {
     	return values;
     }
     
-    public long addEnclosure(long itemId, Enclosure enclosure) {
-    	return addEnclosure(itemId,getContentValues(itemId, enclosure));
+    public void addEnclosure(long itemId, Enclosure enclosure) {
+    	addEnclosure(itemId,getContentValues(itemId, enclosure));
     }
     
     public long addEnclosure(long itemId, ContentValues values) {
@@ -850,19 +803,15 @@ public class RepositoryController {
     	return enclosureId;
     }
     
-    public boolean updateEnclosure(long itemId, Enclosure enclosure) {
-    	return updateEnclosure(enclosure.getId(), getContentValues(itemId, enclosure));
+    public void updateEnclosure(long itemId, Enclosure enclosure) {
+    	updateEnclosure(enclosure.getId(), getContentValues(itemId, enclosure));
     }
     
     public boolean updateEnclosure(long id, ContentValues values) {
     	return (mDb.update(DbSchema.EnclosureSchema.TABLE_NAME, values, DbSchema.EnclosureSchema._ID + "=?", new String[]{Long.toString(id)}) > 0);
     }
     
-    public boolean removeEnclosures(long itemId) {
-    	return (mDb.delete(DbSchema.EnclosureSchema.TABLE_NAME, DbSchema.EnclosureSchema.COLUMN_ITEM_ID + "=?", new String[]{Long.toString(itemId)}) > 0);
-    }
-    
-    public boolean removeEnclosure(long id) {
-    	return (mDb.delete(DbSchema.EnclosureSchema.TABLE_NAME, DbSchema.EnclosureSchema._ID + "=?", new String[]{Long.toString(id)}) > 0);
+    public void removeEnclosures(long itemId) {
+    	mDb.delete(DbSchema.EnclosureSchema.TABLE_NAME, DbSchema.EnclosureSchema.COLUMN_ITEM_ID + "=?", new String[]{Long.toString(itemId)});
     }
 }

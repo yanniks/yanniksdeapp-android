@@ -3,6 +3,7 @@ package org.sliit;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.preference.PreferenceManager;
@@ -39,7 +40,11 @@ public class SplashScreenActivity extends Activity {
 
         Drawable backgroundDrawable = getResources().getDrawable(R.drawable.splash_background);
         backgroundDrawable.setDither(true);
-        findViewById(android.R.id.content).setBackgroundDrawable(backgroundDrawable);
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.JELLY_BEAN) {
+            findViewById(android.R.id.content).setBackgroundDrawable(backgroundDrawable);
+        } else {
+            findViewById(android.R.id.content).setBackground(backgroundDrawable);
+        }
         mHandler.postDelayed(mPendingLauncherRunnable, SharedPreferencesHelper.getPrefSplashDuration(this));
     }
 

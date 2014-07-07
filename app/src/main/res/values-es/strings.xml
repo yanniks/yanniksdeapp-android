@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">yanniks.de App</string>
+    <string name="wkommen">Bienvenido al yanniks.de App!</string>
+    <string name="wkommen_desc">Usando la parte inferior en la parte superior izquierda se puede obtener acceso al menú, todo lo demás se explica por sí.</string>
     <string name="copyright">App de Yannik Ehlert</string>
     <string name="blogposts">Mensajes del blog</string>
     <string name="impress">pie de imprenta</string>
     <string name="source">Esta aplicación es de código abierto. El código está disponible en GitHub:</string>
     <string name="about">El nuevo yanniks.de es un sitio de desarrollo con diversos temas: Android, iOS, Mac y Linux tutoriales son partee del nuevo concepto de yanniks.de. Diviértete!</string>
     <string name="pref_name">Ajustes</string>
-    <string name="app_title">yanniks.de RSS Reader</string>
-    <string name="app_description">El RSS Reader por la yanniks.de Android App</string>
     <string name="email">E-Mail: kontakt@yanniks.de</string>
     <string name="website">http://yanniks.de</string>
     <string name="contact">Twitter: @yanniksde</string>
@@ -23,9 +23,7 @@
     <string name="update_format_pattern">dd.MM.yyyy - k:mm</string>
     <string name="yes">Sí</string>
     <string name="no">No</string>
-    <string name="loading">Cargando...</string>
-    <string name="updating">Actualización de la Información</string>
-    <string name="downloading">Por favor, espere mientras se descarga ...</string>
+    <string name="loading">Cargando&#8230;</string>
     <string name="ctx_menu_title">Opciones</string>
     <string name="add_fav">Añadir a favoritos</string>
     <string name="add_fav_msg">Este artículo ha sido añadido a favoritos</string>
@@ -36,13 +34,11 @@
     <string name="share">Comparte este artículo</string>
     <string name="share_subject">He compartido un nuevo artículo sobre la yanniks.de App</string>
     <string name="snetworks">Redes Sociales</string>
-    <string name="last_update">Última actualización</string>
     <string name="next_item">artículo siguiente</string>
     <string name="previous_item">artículo previa</string>
     <string name="read_online">Leer Conectado</string>
     <string name="menu_home">Comienzo</string>
     <string name="menu_refresh">Actualización</string>
-    <string name="menu_channels">Canales</string>
     <string name="menu_preferences">Configuración</string>
     <string name="menu_about">Acerca de la aplicación</string>
     <string name="updated">Última actualización</string>
@@ -61,14 +57,12 @@
     <string name="app_pref_default_splash_screen_duration">0</string>
     <string name="yannikehlert">- App y Web site desarrollado por Yannik Ehlert</string>
     <string name="feeder">- RSS Reader FeedER por rajithd</string>
-    <string name="devmode">modo de programador</string>
     <string name="webview">web link</string>
     <string name="oclock">hora</string>
     <string name="webimprint">Contactos Conectado</string>
     <string name="cydia">Fuente de Cydia</string>
     <string name="cdporter">CD porter</string>
     <string name="navigation">Navegación</string>
-    <string name="newmark">NUEVA</string>
     <string name="license">Publicado bajo licencia AWTFPL</string>
     <string name="lang">es</string>
     <string name="enablessl">Activar SSL</string>

@@ -10,9 +10,6 @@ import java.util.List;
 
 
 public class Feed {
-	private static final String LOG_TAG = "Feed";
-	
-	public static final String TYPE_RDF = "rdf";
 	public static final String TYPE_RSS = "rss";
 	public static final String TYPE_ATOM = "atom";
 	
@@ -27,18 +24,6 @@ public class Feed {
 	
 	public Feed() {
 		mItems = new ArrayList<Item>();
-	}
-	
-	public Feed(long id, URL url, URL homePage, String title, String type, Date refresh, boolean enabled, List<Item> items) {
-		super();
-		this.mId = id;
-		this.mURL = url;
-		this.mHomePage = homePage;
-		this.mTitle = title;
-		this.mType = type;
-		this.mRefresh = refresh;
-		this.mEnabled = enabled;
-		this.mItems = items;
 	}
 	
 	public void setId(long id) {
@@ -88,20 +73,9 @@ public class Feed {
 	public Date getRefresh() {
 		return mRefresh;
 	}
-
-	public void enable() {
-		this.mEnabled = true;
-	}
-	
-	public void disable() {
-		this.mEnabled = false;
-	}
 	
 	public void setEnabled(int state) {
-		if (state == DbSchema.OFF)
-			this.mEnabled = false;
-		else
-			this.mEnabled = true;
+        this.mEnabled = state != DbSchema.OFF;
 	}
 	
 	public boolean isEnabled() {
@@ -123,10 +97,9 @@ public class Feed {
 	public String toString() {
 		String s = "{ID=" + this.mId + " URL=" + this.mURL.toString() + " homepage=" + this.mHomePage.toString() + " title=" + this.mTitle + " type=" + this.mType + " update=" + this.mRefresh.toString() + " enabled=" + this.mEnabled;
 		s = s + " items={";
-		Iterator<Item> iterator = this.mItems.iterator();
-		while (iterator.hasNext()) {
-			s = s + iterator.next().toString();
-		}
+        for (Item mItem : this.mItems) {
+            s = s + mItem.toString();
+        }
 		s = s + "}}";
 		return s;
 	}

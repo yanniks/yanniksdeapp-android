@@ -24,6 +24,7 @@
 				android:gravity="right">
 		    <ImageView 
 		    		android:id="@+id/fav"
+                android:contentDescription="@string/favorites"
 					android:layout_width="wrap_content"
 					android:layout_height="wrap_content"
 					android:src="@drawable/fav1"

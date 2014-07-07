@@ -1,4 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <style name="AppTheme" parent="android:Theme.Holo.Light.DarkActionBar" />
+    <style name="AppTheme" parent="android:Theme.Holo.Light.DarkActionBar">
+    <item name="showcaseViewStyle">@style/CustomShowcaseTheme</item>
+    </style>
+    <style name="CustomShowcaseTheme" parent="ShowcaseView">
+        <item name="sv_backgroundColor">#aa000000</item>
+    </style>
 </resources>

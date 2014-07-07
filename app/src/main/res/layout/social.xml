@@ -31,7 +31,7 @@
         android:layout_alignParentRight="true"
         android:layout_below="@+id/social_fb"
         android:onClick="facebook"
-        android:text="Facebook" />
+        android:text="@string/facebook" />
 
     <Button
         android:id="@+id/ImageView02"
@@ -41,7 +41,7 @@
         android:layout_alignParentRight="true"
         android:layout_below="@+id/ImageView01"
         android:onClick="gplus"
-        android:text="Google+" />
+        android:text="@string/gplus" />
 
     <Button
         android:id="@+id/social_fb"
@@ -52,6 +52,6 @@
         android:layout_alignParentTop="true"
         android:layout_marginTop="97dp"
         android:onClick="twitter"
-        android:text="Twitter" />
+        android:text="@string/twitter" />
 
 </RelativeLayout>

@@ -18,7 +18,6 @@ public final class SharedPreferencesHelper {
 	
 	public static final int DIALOG_ABOUT = 0;
 	public static final int DIALOG_NO_CONNECTION = 1;
-	public static final int DIALOG_UPDATE_PROGRESS = 2;
 	
 	public static final int CHANNEL_SUBMENU_GROUP = 0;
 	
@@ -85,8 +84,6 @@ public final class SharedPreferencesHelper {
     public static boolean isOnline(Context ctx) {
     	ConnectivityManager cm = (ConnectivityManager) ctx.getSystemService(Context.CONNECTIVITY_SERVICE);
     	NetworkInfo ni = cm.getActiveNetworkInfo();
-    	if (ni != null)
-    		return ni.isConnectedOrConnecting();
-    	else return false;
+        return ni != null && ni.isConnectedOrConnecting();
     }
 }
