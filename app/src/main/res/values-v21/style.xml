@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <style name="AppTheme" parent="android:Theme.Material.Light.DarkActionBar">
+    <style name="AppTheme">
         <item name="android:colorPrimary">#32912d</item>
         <item name="android:colorPrimaryDark">#2c7f28</item>
         <item name="showcaseViewStyle">@style/CustomShowcaseTheme</item>

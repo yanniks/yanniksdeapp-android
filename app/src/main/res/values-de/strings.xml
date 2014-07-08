@@ -6,16 +6,12 @@
 <string name="copyright">"App von Yannik Ehlert"</string>
 <string name="blogposts">"Blog-Meldungen"</string>
 <string name="snetworks">"Soziale Netzwerke"</string>
-<string name="rss">"RSS"</string>
 <string name="impress">"Impressum"</string>
 <string name="source">"Diese App ist Open Source. Der Code ist verfügbar auf folgenden Plattformen:"</string>
-<string name="desclogo">"yanniks.de Logo"</string>
 <string name="about">"Das neue yanniks.de ist eine Entwickler-Website mit verschiedenen Themen: Android, iOS, Mac und Linux Tutorials sind Teile des neuen Konzepts von yanniks.de. Viel Spaß!"</string>
 <string name="pref_name">"Einstellungen"</string>
 <string name="email">"E-Mail: kontakt@yanniks.de"</string>
 <string name="website">"http://yanniks.de"</string>
-<string name="github">"GitHub: https://github.com/yanniks/yanniksdeapp-android"</string>
-<string name="bitbucket">"BitBucket: https://bitbucket.org/yanniks/yanniksdeapp-android"</string>
 <string name="contact">"Twitter: @yanniksde"</string>
 <string name="version">"Version"</string>
 <string name="powered">"RSS Reader powered by FeedER"</string>
@@ -70,7 +66,6 @@
 <string name="openinfb">"In Facebook-App öffnen"</string>
 <string name="openinfb_desc">"Möchtest du die Seite in der Facebook-App öffnen?"</string>
 <string name="licensetext">"Lizenztext"</string>
-<string name="desc_list_item_icon">"Artikel-Icon"</string>
 <string name="navigation">"Navigation"</string>
 
 <!-- Nav Drawer Menu Items -->
@@ -78,7 +73,4 @@
 <string name="enablessl">"SSL aktivieren"</string>
 <string name="enablessl_desc">"SSL für den Zugriff auf die Seite aktivieren - aktuell noch experimentell"</string>
 <string name="defsettings">"Standardeinstellungen"</string>
-<string name="facebook">"Facebook"</string>
-<string name="gplus">"Google+"</string>
-<string name="twitter">"Twitter"</string>
 </resources>

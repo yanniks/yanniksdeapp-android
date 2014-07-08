@@ -1,26 +1,25 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 'android-L'
+    compileSdkVersion 21
     buildToolsVersion "20.0.0"
-
-    repositories {
-        mavenCentral()
-        maven {
-            url 'https://oss.sonatype.org/content/repositories/snapshots'
-        }
-    }
 
     lintOptions {
         abortOnError false
     }
 
     defaultConfig {
-        minSdkVersion 'L'
+        minSdkVersion 14
         targetSdkVersion 'L'
     }
-    dependencies {
-        compile "com.android.support:support-v4:+"
-        compile 'com.github.amlcurran.showcaseview:library:5.0.0-SNAPSHOT@aar'
+}
+repositories {
+    mavenCentral()
+    maven {
+        url 'https://oss.sonatype.org/content/repositories/snapshots'
     }
+}
+dependencies {
+    compile 'com.github.amlcurran.showcaseview:library:5.0.0-SNAPSHOT@aar'
+    compile 'com.android.support:support-v4:+'
 }
