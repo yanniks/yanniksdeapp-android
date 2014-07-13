@@ -1,0 +1,4 @@
+[submodule "ratememaybe"]
+	path = ratememaybe
+	url = https://github.com/yanniks/RateMeMaybe.git
+	branch = gradle
