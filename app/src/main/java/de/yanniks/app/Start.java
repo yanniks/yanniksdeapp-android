@@ -34,6 +34,7 @@ import android.widget.Toast;
 
 import com.github.amlcurran.showcaseview.ShowcaseView;
 import com.github.amlcurran.showcaseview.targets.ActionViewTarget;
+import com.kopfgeldjaeger.ratememaybe.RateMeMaybe;
 
 import java.util.ArrayList;
 
@@ -54,6 +55,11 @@ public class Start extends FragmentActivity {
 	protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.menu);
+        RateMeMaybe rmm = new RateMeMaybe(this);
+        //rmm.setPromptMinimums(10, 14, 10, 30);
+        rmm.setPromptMinimums(0,0,0,0);
+        rmm.setStore(getString(R.string.stu));
+        rmm.run();
         mTitle = getTitle();
         boolean firstrun = getSharedPreferences("PREFERENCE", MODE_PRIVATE).getBoolean("firstrun", true);
         if (firstrun){

@@ -12,6 +12,22 @@ android {
         minSdkVersion 14
         targetSdkVersion 'L'
     }
+    signingConfigs {
+        releaseSigning {
+            def console = System.console()
+            if (console != null) {
+                storeFile file(System.getenv("KEYSTORE"))
+                storePassword System.getenv("KEYSTORE_PASSWORD")
+                keyAlias System.getenv("KEY_ALIAS")
+                keyPassword System.getenv("KEY_PASSWORD")
+            }
+        }
+    }
+    buildTypes {
+        release {
+            signingConfig signingConfigs.releaseSigning
+        }
+    }
 }
 repositories {
     mavenCentral()
@@ -22,4 +38,5 @@ repositories {
 dependencies {
     compile 'com.github.amlcurran.showcaseview:library:5.0.0-SNAPSHOT@aar'
     compile 'com.android.support:support-v4:+'
+    compile project(":ratememaybe")
 }
