@@ -56,8 +56,7 @@ public class Start extends FragmentActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.menu);
         RateMeMaybe rmm = new RateMeMaybe(this);
-        //rmm.setPromptMinimums(10, 14, 10, 30);
-        rmm.setPromptMinimums(0,0,0,0);
+        rmm.setPromptMinimums(10, 14, 10, 30);
         rmm.setStore(getString(R.string.stu));
         rmm.run();
         mTitle = getTitle();
