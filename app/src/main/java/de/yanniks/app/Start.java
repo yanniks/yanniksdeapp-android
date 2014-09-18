@@ -66,7 +66,7 @@ public class Start extends FragmentActivity {
                 Toast.makeText(getApplicationContext(), "This Android version is not fully supported yet!",
                         Toast.LENGTH_LONG).show();
             } else {
-                new ShowcaseView.Builder(this)
+                new ShowcaseView.Builder(this,true)
                         .setTarget(new ActionViewTarget(this, ActionViewTarget.Type.HOME))
                         .setContentTitle(getString(R.string.wkommen))
                         .setContentText(getString(R.string.wkommen_desc))
