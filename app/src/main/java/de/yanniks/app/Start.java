@@ -63,8 +63,7 @@ public class Start extends FragmentActivity {
         boolean firstrun = getSharedPreferences("PREFERENCE", MODE_PRIVATE).getBoolean("firstrun", true);
         if (firstrun){
             if(Build.VERSION.SDK_INT > 19) {
-                Toast.makeText(getApplicationContext(), "This Android version is not fully supported yet!",
-                        Toast.LENGTH_LONG).show();
+                
             } else {
                 new ShowcaseView.Builder(this,true)
                         .setTarget(new ActionViewTarget(this, ActionViewTarget.Type.HOME))
