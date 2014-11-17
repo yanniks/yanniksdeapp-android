@@ -235,13 +235,7 @@ public class Start extends FragmentActivity {
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
         Intent webview = new Intent(this, webview.class);
         webview.putExtra ("title",getString(R.string.impress));
-        ssl = prefs.getBoolean("usessl",false);
-        if (!ssl) {
-            webview.putExtra("url", "http://yanniks.de/cms/api.php?lang=" + getString(R.string.lang) + "&launch=app&page=impressum" + "&version=" + SharedPreferencesHelper.getVersionName(this));
-        } else {
-            Log.i("yanniks.deApp","Using SSL");
-            webview.putExtra("url", "https://yanniksde-updatechecker.rhcloud.com/cms/api.php?lang=" + getString(R.string.lang) + "&launch=app&page=impressum" + "&version=" + SharedPreferencesHelper.getVersionName(this));
-        }
+        webview.putExtra("url", "https://yanniks.de/cms/api.php?lang=" + getString(R.string.lang) + "&launch=app&page=impressum" + "&version=" + SharedPreferencesHelper.getVersionName(this));
         startActivity(webview);
     }
     public void social (final View view) {
@@ -262,26 +256,14 @@ public class Start extends FragmentActivity {
                 break;
             case 3:
                 Bundle data = new Bundle();
-                ssl = prefs.getBoolean("usessl",false);
-                if (!ssl) {
-                    data.putString("url", "http://yanniks.de/cms/api.php?launch=app&lang=" + getString(R.string.lang) + "&page=cydia" + "&version=" + SharedPreferencesHelper.getVersionName(this));
-                } else {
-                    Log.i("yanniks.deApp","Using SSL");
-                    data.putString("url", "https://yanniksde-updatechecker.rhcloud.com/cms/api.php?launch=app&lang=" + getString(R.string.lang) + "&page=cydia" + "&version=" + SharedPreferencesHelper.getVersionName(this));
-                }
+                data.putString("url", "https://yanniks.de/cms/api.php?launch=app&lang=" + getString(R.string.lang) + "&page=cydia" + "&version=" + SharedPreferencesHelper.getVersionName(this));
                 data.putString("title",getString(R.string.cydia));
                 fragment = new webviewfragment();
                 fragment.setArguments(data);
                 break;
             case 4:
                 Bundle data2 = new Bundle();
-                ssl = prefs.getBoolean("usessl",false);
-                if (!ssl) {
-                    data2.putString("url","http://yanniks.de/cms/api.php?launch=app&lang=" + getString(R.string.lang) + "&page=cdporter" + "&version=" + SharedPreferencesHelper.getVersionName(this));
-                } else {
-                    Log.i("yanniks.deApp","Using SSL");
-                    data2.putString("url", "https://yanniksde-updatechecker.rhcloud.com/cms/api.php?launch=app&lang=" + getString(R.string.lang) + "&page=cdporter" + "&version=" + SharedPreferencesHelper.getVersionName(this));
-                }
+                data2.putString("url","https://yanniks.de/cms/api.php?launch=app&lang=" + getString(R.string.lang) + "&page=cdporter" + "&version=" + SharedPreferencesHelper.getVersionName(this));
                 data2.putString("title",getString(R.string.cdporter));
                 fragment = new webviewfragment();
                 fragment.setArguments(data2);

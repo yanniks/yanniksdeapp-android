@@ -48,7 +48,7 @@ public class http extends Activity {
                     } else if (yanniksdepath.contains("/google+")) {
                         startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://plus.google.com/113445355917245195373")));
                     } else if (yanniksdepath.contains("/twitter")) {
-                        startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("http://twitter.com/yanniksde")));
+                        startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://twitter.com/yanniksde")));
                     } else if (yanniksdepath.contains("/facebook")) {
                         try {
                             startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("fb://page/132390900157794")));

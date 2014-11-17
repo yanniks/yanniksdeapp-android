@@ -65,7 +65,7 @@ public class social extends Activity {
 		startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://plus.google.com/113445355917245195373")));
 	}
 	public void twitter (View view) {
-		startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("http://twitter.com/yanniksde")));
+		startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://twitter.com/yanniksde")));
 	}
     @Override
     public boolean onTouchEvent(MotionEvent event) {

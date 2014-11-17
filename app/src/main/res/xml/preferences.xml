@@ -1,14 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
     <PreferenceCategory
-        android:title="@string/defsettings" >
-        <CheckBoxPreference
-            android:title="@string/enablessl"
-            android:summary="@string/enablessl_desc"
-            android:key="usessl"
-            android:defaultValue="false" />
-    </PreferenceCategory>
-    <PreferenceCategory
         android:title="@string/rss" >
 	<ListPreference
 		android:title="@string/pref_item_view_title"

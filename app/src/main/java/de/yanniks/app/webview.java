@@ -31,15 +31,10 @@ public class webview extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.webview);
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
-        Boolean ssl = prefs.getBoolean("usessl",false);
         if(intent.getStringExtra("url").contains("http")) {
             weburl = intent.getStringExtra("url");
         } else {
-            if (!ssl) {
-                weburl = "http://yanniks.de/cms/api.php?launch=app&lang=" + getString(R.string.lang) + "&page=" + intent.getStringExtra("url") + "&version=" + SharedPreferencesHelper.getVersionName(this);
-            } else {
-                weburl = "https://yanniksde-updatechecker.rhcloud.com/cms/api.php?launch=app&lang=" + getString(R.string.lang) + "&page=" + intent.getStringExtra("url") + "&version=" + SharedPreferencesHelper.getVersionName(this);
-            }
+            weburl = "https://yanniks.de/cms/api.php?launch=app&lang=" + getString(R.string.lang) + "&page=" + intent.getStringExtra("url") + "&version=" + SharedPreferencesHelper.getVersionName(this);
         }
         mWebView = (WebView) findViewById(R.id.webview);
         mWebView.getSettings().setJavaScriptEnabled(true);
